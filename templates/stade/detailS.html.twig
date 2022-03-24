@@ -1,0 +1,144 @@
+{% extends 'baseFront.html.twig' %}
+
+{% block match %}
+    <section class="image-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="info">
+                        <div class="wrap">
+                            <ul class="breadcrumbs">
+                                <li>Main</a>/</li>
+                                <li>Stade</li>
+                            </ul>
+                            <h1>Stade</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+
+{% block body %}
+<div class="club-top-info">
+
+    <section class="player-single-wrap">
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="captain-bage">FTF</div>
+                    <h4 class="player-name">Stade</h4>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="player-photo">
+                       
+                        <img class="img-responsive" src="{{ asset('uploads/' ~ e.photo) }}" alt="player" style="width: 300px" style="height:300px" >
+                    </div>
+
+
+                </div>
+
+                <div class="col-md-6">
+                    <div class="player-info">
+                        <h6 class="player-info-title">summary</h6>
+                        <div class="summary">
+                            <div class="row">
+                                <div class="col-md-3 col-sm-3 col-xs-3">
+                                    <div class="item">Name:</div>
+                                </div>
+                                <div class="col-md-9 col-sm-9 col-xs-9">{{ e.noms }}</div>
+
+                                <div class="col-md-3 col-sm-3 col-xs-3">
+                                    <div class="item">Capacité:</div>
+                                </div>
+                                <div class="col-md-9 col-sm-9 col-xs-9">{{ e.nbrP }}</div>
+                                <div class="col-md-3 col-sm-3 col-xs-3">
+                                    <div class="item">Lieu:</div>
+                                </div>
+                                <div class="col-md-9 col-sm-9 col-xs-9">{{ e.lieu }}</div>
+                                 <div class="col-md-3 col-sm-3 col-xs-3">
+                                    <div class="item">Etat:</div>
+                                </div>
+                                <div class="col-md-9 col-sm-9 col-xs-9">{{ e.etat }}</div>
+                            </div>
+                        </div>
+                        <br>    <br>
+
+                       
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+    <center>
+<div class="test_content_container" style="width: 400px;height: 250px;border-radius: 20px;background-color: rgba(134,113,152,0.07)">
+                <div class="mapouter">
+                    <div class="gmap_canvas">
+                        <iframe style="border-radius: 20px" width="400" height="250" id="gmap_canvas" src="https://maps.google.com/maps?q='{{ e.lieu }}{{ e.lieu }}~'&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe></a>
+                        <br>
+                        <style>.mapouter{position:relative;text-align:right;height:230px;width:360px;}</style>
+                    </div>
+                </div>
+            </div>
+            </center>
+    <!--MAIN MATCH SHEDULE BEGIN-->
+
+    <section class="main-match-shedule amateurs-match-shedule">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-12 col-sm-12 col-xs-12"><h6>Latest matches</h6></div>
+                <div class="col-md-12 col-sm-12 col-xs-12">
+
+                    <div class="main-lates-matches">
+                        {% for i in art %}
+                        <a href="{{ path('detailG', { 'id': i.id }) }}" class="item">
+                            <span class="championship">{{ i.tournoi }} - {{ i.stade }}</span>
+                            <span class="teams-wrap">
+                <span class="team">
+                    <span>
+                       <img src="{{ asset('uploads/' ~ i.club1.logo) }}" alt="" style="width: 40px" style="height:40px">
+                    </span>
+                    <span>{{ i.club1 }}</span>
+                </span>
+                <span class="score">
+                    <span>{{ i.r1 }}:{{ i.r2 }}</span>
+
+                </span>
+                <span class="team1">
+                    <span>{{ i.club2 }}</span>
+                    <span><img src="{{ asset('uploads/' ~ i.club2.logo) }}" alt="" style="width: 40px" style="height:40px"></span>
+                </span>
+        </span>
+                            <span class="game-result">{{ i.dated |date('F j-Y-g:i a')}} - Arbitre:{{ i.arbitre}}</span>
+                        </a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>  
+
+    
+
+    <!--MAIN MATCH SHEDULE END-->
+
+
+    <!--MAIN MATCH SHEDULE END-->
+
+
+
+
+
+{% endblock %}
+

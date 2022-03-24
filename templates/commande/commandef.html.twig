@@ -1,0 +1,112 @@
+{% extends "baseFront.html.twig" %}
+{% block match %}
+
+    <section class="image-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="info">
+                        <div class="wrap">
+                            <ul class="breadcrumbs">
+                                <li><a href="index-2.html">Main</a>/</li>
+                                <li>Category</li>
+                            </ul>
+                            <h1>Category</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block body %}
+
+    <!--CART WRAP BEGIN-->
+    <section class="cart-wrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    {% if items!=null %}
+                        <h4>Your Orders</h4>
+                    {% endif %}
+                    {% if items==null %}
+                        <h5>There are no more items in your cart</h5>
+                    {% endif %}
+                </div>
+                <div class="col-md-12 overflow-scroll">
+
+                        <table class="cart-table">
+
+                            <tr>
+                                <th></th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                                <th>Taille</th>
+                                <th> Date </th>
+                            </tr>
+                            {% for item in items %}
+                                <tr class="cart_iem">
+
+                                        <td class="name"><img class="product-image" src="{{  asset('uploads/img/' ~ item.idP.img) }}" width="100" height="100" alt="cart-product">{{ item.idP.nomp }}</td>
+                                    <td class="quantity"> {{ item.qte }} </td>
+                                    <td class="cost"> {{ item.prixU }} dt </td>
+                                    <td class="cost"> {{ item.taille }} </td>
+                                    <td class="cost"> {{ item.date | date('d-m-y') }} </td>
+
+
+
+
+
+
+                                </tr>
+                            {% endfor %}
+                        </table>
+
+                    <div class="col-md-12">
+                        <div class="pagination-wrap">
+
+                            {{ knp_pagination_render(items)}}
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="coupon">
+
+                    </div>
+                </div>
+                <div class="col-md-8 col-sm-6">
+                    <div class="update-wrap">
+
+                    </div>
+                </div>
+                <div class="col-md-8 col-sm-12">
+                    <div class="cart-offer">
+
+                        <div class="offer">
+                            <div class="store-badge new"></div>
+                            <div class="title"> </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-12">
+                    <div class="cart-total">
+
+                        <div class="delivery-list">
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+{% endblock %}
+

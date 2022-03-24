@@ -1,0 +1,56 @@
+{% extends 'baseBack.html.twig' %}
+{% block body %}
+
+    <div class="card flex-fill">
+        <div class="card-header">
+            <div class="mb-3">
+                <a class="" href="{{ path('ajoutG') }}">
+                   Ajout une match
+                </a>
+            </div>
+            <center> <h1>La liste des Matchs</h1></center>
+            <table class="table table-hover my-0">
+                <thead>
+                <tr>
+                    <th class="d-none d-xl-table-cell">id</th>
+                    <th class="d-none d-xl-table-cell">Tournoi</th>
+                    <th class="d-none d-xl-table-cell">Logo 1</th>
+                    <th class="d-none d-xl-table-cell">Club 1</th>
+                    <th class="d-none d-xl-table-cell">Score 1</th>
+                    <th class="d-none d-xl-table-cell">Score 2</th>
+                    <th class="d-none d-xl-table-cell">Club 2</th>
+                    <th class="d-none d-xl-table-cell">Logo 2</th>
+                    <th class="d-none d-xl-table-cell">Arbitre</th>
+                    <th class="d-none d-xl-table-cell">Stade</th>
+                    <th class="d-none d-xl-table-cell">Date</th>
+                    <th class="d-none d-xl-table-cell">Action1</th>
+                    <th class="d-none d-xl-table-cell">Action2</th>
+                </tr>
+                </thead>
+                {% for i in e %}
+
+                <tr>
+                    <td class="d-none d-xl-table-cell">{{ i.id }}</td>
+                    {% if i.tournoi != null %}
+                    <td class="d-none d-xl-table-cell"><img src="{{ asset('uploads/' ~ i.tournoi.logo) }}" alt="" style="width: 40px" style="height:40px"></td>
+                    {% else %}
+                    <td class="d-none d-xl-table-cell"><img src="{{ asset('uploads/error-404.jpeg') }}" alt="" style="width: 40px" style="height:40px"></td>
+                    {% endif %}
+                    <td class="d-none d-xl-table-cell"><img src="{{ asset('uploads/' ~ i.club1.logo) }}" alt="" style="width: 40px" style="height:40px"> </td>
+                    <td class="d-none d-xl-table-cell">{{ i.club1 }}</td>
+                    <td class="d-none d-xl-table-cell">{{ i.r1 }}</td>
+                    <td class="d-none d-xl-table-cell">{{ i.r2 }}</td>
+                    <td class="d-none d-xl-table-cell">{{ i.club2 }}</td>
+                    <td class="d-none d-xl-table-cell"><img src="{{ asset('uploads/' ~ i.club2.logo) }}" alt="" style="width: 40px" style="height:40px"> </td>
+                    <td class="d-none d-xl-table-cell">{{ i.arbitre }}</td>
+                    <td class="d-none d-xl-table-cell">{{ i.stade }}</td>
+                    <td class="d-none d-xl-table-cell">{{ i.dated |date('d-m-Y')}}</td>
+                    <td class="d-none d-xl-table-cell"> <form action="{{ path('SuppG',{'id':i.id}) }}"> <button class="btn btn-success">Supprimer</button> </form> </td>
+                    <td class="d-none d-xl-table-cell"> <form action="{{ path('modifG',{'id':i.id}) }}"> <button class="btn btn-success">Modifier</button> </form> </td>
+                    {% endfor %}
+                </tr>
+
+            </table>
+        </div>
+    </div>
+{% endblock %}

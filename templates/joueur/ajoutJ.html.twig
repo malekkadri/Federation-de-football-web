@@ -1,0 +1,81 @@
+{% extends 'baseBack.html.twig' %}
+{% block body %}
+    <div class="card">
+        <div class="card-header">
+            <div class="mb-3">
+                <a class="" href="{{ path('afficheJ') }}">
+                    Liste Des Joueurs
+                </a>
+            </div>
+            <center> <h1 style="color:steelblue">Formulaire Joueur : Joueur</h1> </center>
+
+
+
+            {# {{ form(g) }} #}
+            {{ form_start(g,{'attr': {'novalidate': 'novalidate'}} ) }}
+            <center>
+                <table  >
+                    
+                     <tr>
+                        <td>{{ form_label(g.nom,"Nom de joueur") }}</td>
+                        <td>{{ form_widget(g.nom,{'attr':{'class':'form-control'}}) }}</td>
+                        <td> {{ form_errors(g.nom) }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ form_label(g.prenom,"Prenom de joueur") }}</td>
+                        <td>{{ form_widget(g.prenom,{'attr':{'class':'form-control'}}) }}</td>
+                        <td> {{ form_errors(g.prenom) }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ form_label(g.age,"Age") }}</td>
+                        <td>{{ form_widget(g.age,{'attr':{'class':'form-control'}})}}</td>
+                        <td>{{ form_errors(g.age) }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ form_label(g.numt,"Nombre de maillot") }}</td>
+                        <td>{{ form_widget(g.numt,{'attr':{'class':'form-control'}})}}</td>
+                        <td>{{ form_errors(g.numt) }}</td>
+                    </tr>
+                     <tr>
+                        <td>{{ form_label(g.nba,"Nombre d'assist") }}</td>
+                        <td>{{ form_widget(g.nba,{'attr':{'class':'form-control'}})}}</td>
+                        <td>{{ form_errors(g.nba) }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ form_label(g.nbm,"Nombre de goals") }}</td>
+                        <td>{{ form_widget(g.nbm,{'attr':{'class':'form-control'}})}}</td>
+                        <td>{{ form_errors(g.nbm) }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ form_label(g.poste,"Poste") }}</td>
+                        <td>{{ form_widget(g.poste,{'attr':{'class':'form-control'}})}}</td>
+                        <td>{{ form_errors(g.poste) }}</td>
+                    </tr>
+                   
+                    <tr>
+                        <td>{{ form_label(g.nationalite,"Nationalite") }}</td>
+                        <td>{{ form_widget(g.nationalite,{'attr':{'class':'form-control'}})}}</td>
+                        <td>{{ form_errors(g.nationalite) }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ form_label(g.club,"Club") }}</td>
+                        <td>{{ form_widget(g.club,{'attr':{'class':'form-control'}})}}</td>
+                        <td>{{ form_errors(g.club) }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ form_label(g.photo,"Photo") }}</td>
+                        <td>{{ form_widget(g.photo,{'attr':{'class':'form-control'}})}}</td>
+                        <td>{{ form_errors(g.photo) }}</td>
+                    </tr>
+
+
+                </table>
+                <br>
+
+                {{ form_end(g) }}
+            </center>
+
+        </div>
+    </div>
+
+{% endblock %}

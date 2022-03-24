@@ -1,0 +1,97 @@
+{% extends 'baseFront.html.twig' %}
+
+{% block match %}
+    <section class="image-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="info">
+                        <div class="wrap">
+                            <ul class="breadcrumbs">
+                                <li>Main</a>/</li>
+                                <li>Reclamation</li>
+                            </ul>
+                            <h1>Reclamation</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block body %}
+    <!-- Single Listing -->
+
+
+    <div class="row">
+    <div class="col-lg-12">
+
+
+    <!-- Hotel Info -->
+
+
+    <!-- Rooms -->
+
+
+
+        <!-- Room -->
+
+
+            <!-- Room -->
+            <h6 class="mb-4" style="color:#fa9e1b">Mes Réclamations</h6>
+
+                <table class="table table-hover my-0">
+                    <thead>
+                    <tr>
+
+                        <th class="d-none d-xl-table-cell">status</th>
+                        <th class="d-none d-xl-table-cell">objet</th>
+                        <th class="d-none d-xl-table-cell">Description</th>
+                        <th class="d-none d-xl-table-cell">Action1</th>
+                        <th class="d-none d-xl-table-cell">Action2</th>
+
+
+                    </tr>
+                    </thead>
+                    {% for s in reclamation %}
+
+                    <tr>
+
+                        <td class="d-none d-xl-table-cell">{{ s.status }} </td>
+                        <td class="d-none d-xl-table-cell">{{ s.objet}}</td>
+                        <td class="d-none d-xl-table-cell">{{ s.descR}}</td>
+                        <td> <form action="{{ path('modifierReclamation',{'idr':s.idr}) }}">
+                               <button class="btn btn-outline-warning m-2">Modifier</button>
+                            </form></td>
+                       <td> <form action="{{ path('supprimerReclamation',{'idr':s.idr}) }}">
+                           <button class="btn btn-outline-danger m-2">Supprimer</button>
+                        </form></td>
+                        {#  <td class="d-none d-xl-table-cell"> <form action="{{ path('SuppS',{'id':i.id}) }}"> <button class="btn btn-success">Supprimer</button> </form> </td>
+                    <td class="d-none d-xl-table-cell"> <form action="{{ path('modifS',{'id':i.id}) }}"> <button class="btn btn-success">Modifier</button> </form> </td> #}
+
+                </tr>
+                    {% endfor %}
+            </table>
+
+    </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

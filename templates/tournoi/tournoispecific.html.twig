@@ -1,0 +1,131 @@
+{% extends 'baseFront.html.twig' %}
+
+
+
+    {% block match %}
+        <div class="main-slider-section">
+            <div class="main-slider">
+                <div id="main-slider" class="carousel slide" data-ride="carousel" >
+                    <div class="carousel-inner" role="listbox">
+
+                        <div class="item active text-center">
+                            <div class="main-slider-caption">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="team">
+                                                <img src="images/soccer/koora.png" alt="team-logo" style="width: 70px" style="height:70px">  Mtaches - by {{ t.nomt }}  <img src="images/soccer/koora.png" alt="team-logo" style="width: 70px" style="height:70px">
+
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {% for i in art %}
+                            <div class="item text-center ">
+
+                                <div class="main-slider-caption">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="match-date">{{ i.tournoi }} - {{ i.dated |date('F j-Y-g:i a')}} / {{ i.stade}}</div>
+                                                <div class="team"> <img src="{{ asset('uploads/' ~ i.club1.logo) }}" alt="" style="width: 40px" style="height:40px">  {{ i.club1}}
+                                                    <div class="big-count">
+                                                        {{ i.r1}}:{{ i.r2}}
+                                                    </div>
+                                                    {{ i.club2}}  <img src="{{ asset('uploads/' ~ i.club2.logo) }}" alt="" style="width: 40px" style="height:40px">
+                                                </div>
+                                                <div class="match-date">Arbitre : {{ i.arbitre}}</div>
+                                                <div class="booking">
+                                                    <a href="{{ path('detailG', { 'id': i.id }) }}">
+                                                        Watch live
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        {% endfor %}
+
+                        <!-- Controls -->
+                        <a class="nav-arrow left-arrow" href="#main-slider" role="button" data-slide="prev">
+                            <i class="fa fa-angle-left" aria-hidden="true"></i>
+                            <span class="sr-only"></span>
+                        </a>
+                        <a class="nav-arrow right-arrow" href="#main-slider" role="button" data-slide="next">
+                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                            <span class="sr-only"></span>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    {% endblock %}
+
+    {% block body %}
+
+        <div id="about" class="esport-championship-about-trophey">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5">
+                        <h5 class="esport-landing-header">About Tournoi</h5>
+                        <div class="trophey-wrap">
+                    <span>
+                        <div >
+                        <img src="{{ asset('uploads/' ~ t.logo) }}" length="70px" height="70px" >
+                            </div>
+                    </span>
+
+                        </div>
+                    </div>
+                    <div class="col-md-7">
+
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="wrap">
+                                    <span class="head">NOM TOURNOI</span>
+                                    <span class="info"> {{ t.nomt }}</span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="wrap">
+                                    <span class="head">Date Debut</span>
+                                    <span class="info">  {{ t.dated |date('d-m-Y')}}</span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="wrap">
+                                    <span class="head">Date Fin</span>
+                                    <span class="info"> {{ t.datef|date('d-m-Y') }}</span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="wrap">
+                                    <span class="head">Type Tournoi</span>
+                                    <span class="info">{{ t.typet }}</span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="wrap">
+                                    <span class="head">Nombre Equipe</span>
+                                    <span class="info">{{ t.nbrc }}</span>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    {% endblock %}

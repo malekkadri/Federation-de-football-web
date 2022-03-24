@@ -1,0 +1,174 @@
+{% extends "baseFront.html.twig" %}
+
+
+{% block match %}
+
+    <section class="image-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="info">
+                        <div class="wrap">
+                            <ul class="breadcrumbs">
+                                <li><a href="index-2.html">Main</a>/</li>
+                                <li>Category</li>
+                            </ul>
+                            <h1>Category</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+
+{% block body %}
+
+
+    <!--PRODUCT SINGLE BEGIN-->
+
+    <section class="product-single">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12"><h4>Slim Support</h4></div>
+                <div class="col-md-7">
+                    <div class="product-slider">
+                        <div class="connected-carousels">
+                            <div class="navigation jcarousel-skin-default">
+                                <a href="#" class="prev prev-navigation"><i class="fa fa-angle-up" aria-hidden="true"></i></a>
+                                <a href="#" class="next next-navigation"><i class="fa fa-angle-down" aria-hidden="true"></i></a>
+                                <div class="carousel carousel-navigation jcarousel-vertical">
+                                    <ul>
+
+
+
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="stage">
+                                <div class="carousel carousel-stage">
+
+                                    <ul>
+                                        <li class="stage-item">
+                                            <img src="{{  asset('uploads/img/' ~ c.img) }}" width="350" height="400" alt="product-main-img">
+                                        </li>
+
+
+                                    </ul>
+                                    <a href="#" class="prev prev-stage"><span><i class="fa fa-angle-left" aria-hidden="true"></i></span></a>
+                                    <a href="#" class="next next-stage"><span><i class="fa fa-angle-right" aria-hidden="true"></i></span></a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="product-right-info">
+                        <div class="rating-wrap">
+                            <div class="rating four"></div>
+                            <div class="quantity">( 2 reviews )</div>
+                        </div>
+<form action=" {{  path('cart_add')}}" method="get">
+                        <div class="price">{{ c.prix }} dt </div>
+                        <p>{{ c.descr }}.</p>
+                        <div class="title">Colors</div>	
+                        <div class="color-filter-item">
+                            <ul>
+                                {%  if c.couleur=="noire" %}
+                                <li>
+
+                                    <label class="color-check black">
+
+                                        <span class="check"><i class="fa fa-check" aria-hidden="true"></i></span>
+                                    </label>
+
+                                </li>
+                                {%  endif %}
+
+                                {%  if c.couleur=="rouge" %}
+                                    <li>
+
+                                        <label class="color-check red">
+
+                                            <span class="check"><i class="fa fa-check" aria-hidden="true"></i></span>
+                                        </label>
+
+                                    </li>
+                                {%  endif%}
+
+                                {%  if c.couleur=="blanc" %}
+                                    <li>
+
+                                        <label class="color-check white">
+
+                                            <span class="check"><i class="fa fa-check" aria-hidden="true"></i></span>
+                                        </label>
+
+                                    </li>
+                                {%  endif %}
+
+                            </ul>
+                        </div>
+                        <div class="title">Sizes</div>
+                        <div class="size-filter-item">
+                            <ul>
+                                {% if c.taille!="vide" %}
+                                <li>
+                                    <label class="size-check">
+                                        <input type="checkbox" name="taille" value="{{ c.taille }}" />
+                                        <span class="size">{{ c.taille }}</span>
+                                    </label>
+                                </li>
+                                {% endif %}
+
+                                {% if c.taille2!="vide" %}
+                                    <li>
+                                        <label class="size-check">
+                                            <input type="checkbox" name="taille" value="{{ c.taille2 }}" />
+                                            <span class="size">{{ c.taille2 }}</span>
+                                        </label>
+                                    </li>
+                                {% endif %}
+
+
+                            </ul>	
+                        </div>
+                        <div class="title">Quantity</div>
+                        <div class="quantity-wrap">
+                            <input type="number" placeholder="1" name="quantite" value="1">
+
+                            <input type="hidden" name="id" value="{{ c.id }}">
+
+                            <button type="submit" class="comment-submit"> Add Product </button>
+                        </div>
+</form>
+                        <div class="details">
+                            <ul>
+                                <li><span>SKU: </span>300-200-503</li>
+                                <li><span>Categories: </span>Woman’s, Fashion, Slim</li>
+                                <li>
+                                    <span>Tags: </span>
+                                    <a href="#">slim,</a>
+                                    <a href="#">black,</a>
+                                    <a href="#">green,</a>
+                                    <a href="#">red,</a>
+                                    <a href="#">running,</a>
+                                    <a href="#">run</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <ul class="socials">
+                            <li><a href="#"><i class="fa fa-facebook-square" aria-hidden="true"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                            <li><a href="#"><i class="fa fa-google" aria-hidden="true"></i></a></li>
+                            <li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+                            <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endblock %}
+

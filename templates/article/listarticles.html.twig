@@ -1,0 +1,16 @@
+{% for i in a %}
+    <div class="item img-top" name="elements" id="{{'i'~ i.id }}">
+        <div class="img-wrap">
+            <div class="bage"><a href="#">News</a></div>
+            <a href="{{ path('interaction',{'id':i.id,'name':i.titre}) }}"><img src="{{ asset('uploads/img/' ~ i.img) }}" style="width:850px" style="height:600px" alt="post image"></a>
+        </div>
+        <div class="info">
+            <a href="{{ path('interaction',{'id':i.id,'name':i.titre}) }}" class="name">{{ i.titre}}</a>
+            <div class="wrap">
+                <a href="{{ path('interaction',{'id':i.id,'name':i.titre}) }}">{{ i.datea |date('d-m-Y')}}</a> by <a href="#">{{ i.getUser().username}}</a>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+{% endfor %}
+

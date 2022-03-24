@@ -1,0 +1,248 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block css %}
+    <style>
+        #customers {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #customers td, #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #customers tr:nth-child(even){background-color: #f2f2f2;}
+
+        #customers tr:hover {background-color: #ddd;}
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: rgb(5, 6, 45);
+            color: white;
+        }
+
+        /* CSS */
+        .button-64 {
+            align-items: center;
+            background-image: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB);
+            border: 0;
+            border-radius: 8px;
+            box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+            box-sizing: border-box;
+            color: #FFFFFF;
+            display: flex;
+            font-family: Phantomsans, sans-serif;
+            font-size: 20px;
+            justify-content: center;
+            line-height: 1em;
+            max-width: 100%;
+            min-width: 90px;
+            padding: 3px;
+            text-decoration: none;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            white-space: nowrap;
+            cursor: pointer;
+        }
+
+
+
+        .button-64:active,
+        .button-64:hover {
+            outline: 0;
+        }
+
+        .button-64 span {
+            background-color: rgb(5, 6, 45);
+            padding: 16px 24px;
+            border-radius: 6px;
+            width: 100%;
+            height: 100%;
+            transition: 300ms;
+        }
+
+        .button-64:hover span {
+            background: none;
+        }
+
+        @media (min-width: 768px) {
+            .button-64 {
+                font-size: 24px;
+                min-width: 90px;
+            }
+        }
+
+
+    </style>
+{% endblock %}
+
+{% block notification %}
+<div class="navbar-collapse collapse">
+    <ul class="navbar-nav navbar-align">
+        <li class="nav-item dropdown">
+            <a class="nav-icon dropdown-toggle" href="#" id="alertsDropdown" data-bs-toggle="dropdown">
+                <div class="position-relative">
+                    <i class="align-middle" data-feather="bell"></i>
+                    {% set i=0 %}
+                    {% if qte != null %}
+                        {%  for q in qte %}
+                            {%  set i=i+1 %}
+                            <span class="indicator">{{ i }}</span>
+                        {% endfor %}
+                    {% else %}
+                        <p></p>
+                    {% endif %}
+
+                </div>
+            </a>
+            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0" aria-labelledby="alertsDropdown">
+                <div class="dropdown-menu-header">
+                    {% set j=0 %}
+                    {% if qte != null %}
+                        {%  for q in qte %}
+                            {%  set j=j+1 %}
+                            {{ j }} New Notifications
+                        {% endfor %}
+                    {% else %}
+                        0 New Notifications
+                    {% endif %}
+                </div>
+                <div class="list-group">
+                    {% set k=0 %}
+                    {% if qte != null %}
+                        {%  for q in qte %}
+                            <a href="{{ path('notification',{'id':q.id}) }}" class="list-group-item">
+                                <div class="row g-0 align-items-center">
+                                    <div class="col-2">
+                                        <i class="text-danger" data-feather="alert-circle"></i>
+                                    </div>
+                                    <div class="col-10">
+                                        <div class="text-dark"> Produit  id: {{ q.id}} et du nom "{{  q.nomP }}" et de quantite= {{ q.qte}} </div>
+
+                                    </div>
+                                </div>
+                            </a>
+                        {% endfor %}
+                    {% else %}
+                        <p></p>
+                    {% endif %}
+
+
+
+
+                </div>
+                <div class="dropdown-menu-footer">
+                    <a href="#" class="text-muted">Show all notifications</a>
+                </div>
+            </div>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-icon dropdown-toggle" href="#" id="messagesDropdown" data-bs-toggle="dropdown">
+                <div class="position-relative">
+                    <i class="align-middle" data-feather="message-square"></i>
+                </div>
+            </a>
+            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0" aria-labelledby="messagesDropdown">
+                <div class="dropdown-menu-header">
+                    <div class="position-relative">
+                        4 New Messages
+                    </div>
+                </div>
+                {% endblock %}
+
+
+                {%  block body %}
+
+
+                    <script src="{{ asset('testimp/js/jquery-1.10.2.js') }}"></script>
+                    <!-- BOOTSTRAP SCRIPTS -->
+                    <script src="{{ asset('testimp/js/bootstrap.min.js') }}"></script>
+                    <!-- METISMENU SCRIPTS -->
+                    <script src="{{ asset('testimp/js/jquery.metisMenu.js') }}"></script>
+                    <!-- DATA TABLE SCRIPTS -->
+                    <script src="{{ asset('testimp/js/dataTables/jquery.dataTables.js') }}"></script>
+                    <script src="{{ asset('testimp/js/dataTables/dataTables.bootstrap.js') }}"></script>
+                    <link href="{{ asset('testimp/css/bootstrap.css') }}" rel="stylesheet" />
+                    <!-- FONTAWESOME STYLES-->
+                    <link href="{{ asset('testimp/css/font-awesome.css') }}" rel="stylesheet" />
+                    <!-- CUSTOM STYLES-->
+                    <link href="{{ asset('testimp/css/custom.css') }}" rel="stylesheet" />
+                    <script>
+
+                        $(document).ready(function() {
+                            $('#example').DataTable();
+                        } );
+                    </script>
+                    <!-- CUSTOM SCRIPTS -->
+                    <script src="assets/js/custom.js"></script>
+
+                    <h1>Produit</h1>
+                    <br>
+                    <br>
+                    <div class="card flex-fill">
+                        <div class="card-header">
+
+                            <h5 class="card-title mb-0">Produit:<a class="badge bg-dark text-white ms-2" href="{{ path('ajoutp') }}">
+                                    Add Produit
+                                </a></h5>
+
+                        </div>
+
+
+                        <!-- Advanced Tables -->
+
+
+                        <table id="example" class="table table-striped table-bordered" style="width:100%">
+                            <thead>
+                            <tr>
+                                <th>Categorie</th>
+                                <th>Marque</th>
+                                <th>Nom Produit</th>
+                                <th>Image Produit</th>
+                                <th>taille 1 </th>
+                                <th>Taille2 </th>
+                                <th>Couleur </th>
+                                <th>Description </th>
+                                <th>Qunatite</th>
+                                <th>Prix </th>
+                                <th></th>
+
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for f in c %}
+                                <tr>
+                                    {# <td class="d-none d-xl-table-cell">{{ i.id}}</td> #}
+                                    <td class="d-none d-xl-table-cell">{{ f.categorie.typeC}}</td>
+                                    <td class="d-none d-xl-table-cell">{{ f.marquep.nomM}}</td>
+                                    <td class="d-none d-xl-table-cell">{{ f.nomp}}</td>
+
+                                    <td class="d-none d-xl-table-cell"><img src="{{ asset('uploads/img/' ~ f.img) }}" alt="" style="width: 70px" style="height:70px"></td>
+                                    <td class="d-none d-xl-table-cell">{{ f.taille}}</td>
+                                    <td class="d-none d-xl-table-cell">{{ f.taille2}}</td>
+                                    <td class="d-none d-xl-table-cell">{{ f.couleur}}</td>
+                                    <td class="d-none d-xl-table-cell">{{ f.descr}}</td>
+
+                                    <td class="d-none d-xl-table-cell">{{ f.qte}}</td>
+                                    <td class="d-none d-xl-table-cell">{{ f.prix}} DT</td>
+
+                                    <td class="d-none d-xl-table-cell"><form action="{{ path('modifp',{'id':f.id}) }}"><button class="btn btn-success"> update  </button></form></td>
+                                    <td class="d-none d-xl-table-cell"><form action="{{ path('suppp',{'id':f.id}) }}"><button class="btn btn-danger"> delete  </button></form></td>
+                                </tr>
+                            {% endfor %}
+
+                            </tbody>
+
+                        </table>
+                    </div>
+
+
+
+
+                {% endblock %}

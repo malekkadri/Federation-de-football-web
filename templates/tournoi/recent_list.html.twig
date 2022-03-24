@@ -1,0 +1,11 @@
+{% for a in t %}
+<li>
+                <a href="{{ asset(path("affiches",{'id':a.id})) }}"><span><img src="{{ asset('uploads/' ~ a.logo) }}" alt="" style="width: 40px" style="height:40px"> {{ a.nomt }} <i class="fa fa-long-arrow-right" aria-hidden="true"></i></span></a>
+                <ul>
+                    <li><a href="{{ path('afficheGFD',{'id':a.id}) }}"><span>Matches</span></a></li>
+                    <li><a href="{{ path('afficheCls',{'id':a.id}) }}"><span>Standings</span></a></li>
+
+                </ul>
+            </li>
+
+{% endfor %}

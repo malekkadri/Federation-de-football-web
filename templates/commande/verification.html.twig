@@ -1,0 +1,64 @@
+{% extends "baseFront.html.twig" %}
+
+{% block match %}
+<section class="image-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="info">
+                    <div class="wrap">
+                        <ul class="breadcrumbs">
+                            <li>Main</a>/</li>
+                            <li>Arbitres</li>
+                        </ul>
+                        <h1>Arbitres</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+{% block body %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autofocus Field</title>
+    <link rel="stylesheet" href="{{ asset('verif.css') }}">
+</head>
+<body>
+<div class="container">
+    <h1>Enter your verification code</h1>
+    <div class="userInput">
+
+        {{ form_start(f)}}
+
+        {% if qr!=null %}
+            <img src="{{ qr }}" width="400" height="400">
+        {% endif %}
+
+        {{ form_widget(f) }}
+
+        {% if x==1 %}
+            <p>code non valide</p>
+        {% endif %}
+
+    </div>
+    <button class="proceed">Submit</button>
+
+    <br><br><br><br>
+
+    {{ form_end(f)}}
+</div>
+<script type="text/javascript">
+    function clickEvent(first,last){
+        if(first.value.length){
+            document.getElementById(last).focus();
+        }
+    }
+</script>
+</body>
+</html>
+
+{% endblock %}

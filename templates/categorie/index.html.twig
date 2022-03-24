@@ -1,0 +1,39 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block body %}
+
+    <div class="card flex-fill">
+        <div class="card-header">
+            <div class="mb-3">
+                <a class="" href="{{ path('ajoutc') }}">
+                    Ajout une Categorie
+                </a>
+            </div>
+            <center> <h1>La liste des Categories</h1></center>
+            <br>
+            <table class="table table-hover my-0">
+                <thead>
+                <tr>
+                    <th class="d-none d-xl-table-cell">Type Categorie </th>
+                    <th class="d-none d-xl-table-cell">Action1</th>
+                    <th class="d-none d-xl-table-cell">Action2</th>
+                </tr>
+                </thead>
+                {% for f in c %}
+
+                <tr>
+
+                    <td class="d-none d-xl-table-cell">{{ f.typeC}}</td>
+                    <td>  <form action="{{path('modifc',{'id':f.id}) }}"><button class="btn btn-success" role="button"><span class="text">Modifier</span></button></form> </td>
+
+                    <td> <form action="{{path('suppc',{'id':f.id}) }}"> <button class="btn btn-success" role="button"><span class="text">Supprimer</span></button></form> </td>
+
+
+                    {% endfor %}
+                </tr>
+
+            </table>
+        </div>
+    </div>
+{% endblock %}
+

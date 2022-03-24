@@ -1,0 +1,62 @@
+{% block body %}
+    <h1 align="center">Liste des Clubs</h1>
+    <style type="text/css">
+        * {
+            font-family: Candara, Arial, sans-serif;
+        }
+        table{
+            font-size: 17px;
+            background-color: lightgrey;
+        }
+        tfoot tr td{
+            font-weight: bold;
+            font-size: x-small;
+        }
+        .gray {
+            background-color: lightgreen;
+        }
+    </style>
+    <style>
+        table, td, th {
+            border: 1px solid;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+    </style>
+
+
+
+    <table border="2" >
+
+        <thead>
+        <tr>
+            <th class="d-none d-xl-table-cell">id</th>
+            <th class="d-none d-xl-table-cell">Photo</th>
+            <th class="d-none d-xl-table-cell">Name</th>
+            <th class="d-none d-xl-table-cell">President</th>
+            <th class="d-none d-xl-table-cell">Sponsor</th>
+            <th class="d-none d-xl-table-cell">Description</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for i in e %}
+
+            <tr>
+                <td class="d-none d-xl-table-cell">{{ i.id }}</td>
+                <td class="d-none d-xl-table-cell"><img src="{{ 'uploads/' ~ i.logo }}" alt="" style="width: 80px" style="height:80px"> </td>
+                <td class="d-none d-xl-table-cell">{{ i.nomc }}</td>
+                <td class="d-none d-xl-table-cell">{{ i.president }}</td>
+                <td class="d-none d-xl-table-cell">{{ i.sponsor }}</td>
+                <td class="d-none d-xl-table-cell">{{ i.descr }}</td>
+
+
+            </tr >
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+{% endblock %}

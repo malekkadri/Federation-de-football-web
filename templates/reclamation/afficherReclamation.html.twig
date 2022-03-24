@@ -1,0 +1,44 @@
+
+
+    <div class="container-fluid pt-4 px-4">
+        <div class="bg-light text-center rounded p-4">
+            <div class="d-flex align-items-center justify-content-between mb-4">
+
+                <a href="" style="color: #fa9e1b">Show All</a>
+            </div>
+            <h1 style="color:steelblue" align="center">Liste des Réclamations</h1>
+            <br>
+
+            <div class="table-responsive">
+                <table border="3" align="center" class="table">
+                    <tr align="center" style="color: cornflowerblue">
+
+            <th scope="col" class="table-secondary">status</th>
+            <th scope="col" class="table-secondary">objet</th>
+            <th scope="col" class="table-secondary">description</th>
+            <th scope="col" class="table-secondary">user</th>
+
+
+
+        </tr>
+                </thead>
+                <tbody>
+        <tr {% for s in reclamation %}>
+
+            <td class="table-light">{{ s.status }}</td>
+            <td class="table-light">{{ s.objet }}</td>
+            <td class="table-light">{{ s.descR }}</td>
+            <td class="table-light">{{ s.user }}</td>
+
+
+
+        </tr {% endfor %}>
+                </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+
+

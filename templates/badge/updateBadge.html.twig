@@ -1,0 +1,59 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block body %}
+    {{form_start(fb)}}
+    <main class="content">
+        <div class="container-fluid p-0">
+
+            <div class="mb-3">
+                <h1 class="h3 d-inline align-middle">Badge</h1>
+                <a class="badge bg-dark text-white ms-2" href="upgrade-to-pro.html">
+                    Edit Badge
+                </a>
+            </div>
+            <div class="row">
+                <div class="col-12 col-lg-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">{{ form_label(fb.nomB,"Badge Name")}}</h5>
+                        </div>
+                        <div class="card-body">
+                            {{form_widget(fb.nomB , {'attr':{'class':'form-control'}})}}
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+
+
+                        </div>
+                        <div class="card-body">
+
+                            {{form_widget(fb.logoB , {'attr':{'class':'form-control'}})}}
+
+
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">{{ form_label(fb.nb,"participations needed")}} :</h5>
+                        </div>
+                        <div class="card-body">
+
+                            {{form_widget(fb.nb , {'attr':{'class':'form-control'}})}}
+
+
+                        </div>
+                    </div>
+
+
+                    <div class="btn-group mb-3" role="group" aria-label="Third group">
+                        {{ form_widget(fb.save, {'attr':{'class':'btn btn-secondary'}}) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    {{ form_end(fb) }}
+
+{% endblock %}

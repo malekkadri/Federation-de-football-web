@@ -1,0 +1,35 @@
+
+<table class="table table-hover my-0">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Rank</th>
+        <th>Trophe</th>
+        <th> Prixpp <i class=" arrow-down" ></i></th>
+        <th class="d-none d-xl-table-cell">Image</th>
+        <th class="d-none d-xl-table-cell">Nom Tournoi</th>
+        <th class="d-none d-md-table-cell">Actions</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    {% for i in r %}
+    <tr>
+        <td> {{ i.idR }}</td>
+        <td> {{ i.rank }}</td>
+        <td> {{ i.trophe }}</td>
+        <td> {{ i.prixR }}</td>
+        <td><img src="{{ asset('uploads/' ~ i.img) }}" alt="" style="width: 80px" style="height:80px"> </td>
+        {% if i.tournoi != null %}
+            <td class="d-none d-xl-table-cell"><img src="{{ asset('uploads/' ~ i.tournoi.logo) }}" alt="" style="width: 40px" style="height:40px"></td>
+        {% else %}
+            <td class="d-none d-xl-table-cell"><img src="{{ asset('uploads/error-404.jpeg') }}" alt="" style="width: 40px" style="height:40px"></td>
+        {% endif %}
+
+
+        <td> <form action="{{ path('suppR',{'id':i.idR}) }}"><button class="btn btn-info"> supprimer  </button></form></td>
+        <td> <form action="{{ path('modifR',{'id':i.idR}) }}"><button class="btn btn-info"> modifier  </button></form></td>
+        {% endfor %}
+    </tr>
+    </tbody>
+</table>

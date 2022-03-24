@@ -1,0 +1,43 @@
+{% extends 'baseBack.html.twig' %}
+{% block body %}
+
+<div class="card flex-fill">
+    <div class="card-header">
+        <div class="mb-3">
+            <a class="" href="{{ path('ajoutSp') }}">
+             <button class="btn btn-primary btn-sm">Ajout une Sponsor</button>
+            </a>
+              <div>
+  <br>      
+                    </div>
+        </div>
+
+
+
+        <center> <h1>La liste des Sponsors</h1></center>
+    <table class="table table-hover my-0">
+        <thead>
+        <tr>
+            <th class="d-none d-xl-table-cell">id</th>
+            <th class="d-none d-xl-table-cell">Name</th>
+            <th class="d-none d-xl-table-cell">Photo</th>
+            <th class="d-none d-xl-table-cell">Action1</th>
+            <th class="d-none d-xl-table-cell">Action2</th>
+        </tr>
+        </thead>
+        {% for i in e %}
+
+        <tr>
+            <td class="d-none d-xl-table-cell">{{ i.id }}</td>
+            <td class="d-none d-xl-table-cell">{{ i.nomS }}</td>
+            <td class="d-none d-xl-table-cell"><img src="{{ asset('uploads/' ~ i.logoS) }}" alt="" style="width: 80px" style="height:80px"> </td>
+            <td class="d-none d-xl-table-cell"> <form action="{{ path('SuppSp',{'id':i.id}) }}"> <button class="btn btn-success">Supprimer</button> </form> </td>
+            <td class="d-none d-xl-table-cell"> <form action="{{ path('modifSp',{'id':i.id}) }}"> <button class="btn btn-success">Modifier</button> </form> </td>
+            {% endfor %}
+        </tr>
+
+    </table>
+</div>
+</div>
+
+{% endblock %}

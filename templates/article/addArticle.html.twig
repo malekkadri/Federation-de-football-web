@@ -1,0 +1,74 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block body %}
+    {{form_start(fb,{'attr': {'novalidate': 'novalidate'}} ) }}
+
+    <main class="content">
+        <div class="container-fluid p-0">
+
+            <div class="mb-3">
+                <h1 class="h3 d-inline align-middle">Article</h1>
+                <a class="badge bg-dark text-white ms-2" href="upgrade-to-pro.html">
+                    ADD Article
+                </a>
+            </div>
+            <div class="row">
+                <div class="col-12 col-lg-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">{{ form_label(fb.titre,"titre")}}</h5>
+                        </div>
+                        <div class="card-body">
+                            {{form_widget(fb.titre , {'attr':{'class':'form-control'}})}}
+                            {{ form_errors(fb.titre) }}
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">{{ form_label(fb.descr,"descr")}}</h5>
+                        </div>
+                        <div class="card-body">
+
+                            {{form_widget(fb.descr , {'attr':{'class':'form-control'}})}}
+                            {{ form_errors(fb.descr) }}
+
+
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">{{ form_label(fb.img,"img")}} :</h5>
+                        </div>
+                        <div class="card-body">
+
+                            {{form_widget(fb.img , {'attr':{'class':'form-control'}})}}
+                            {{ form_errors(fb.img) }}
+
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">{{ form_label(fb.user,"user")}} :</h5>
+                        </div>
+                        <div class="card-body">
+
+                            {{form_widget(fb.user , {'attr':{'class':'form-control'}})}}
+                            {{ form_errors(fb.user) }}
+
+                        </div>
+                    </div>
+
+
+                    <div class="btn-group mb-3" role="group" aria-label="Third group">
+                        {{ form_widget(fb.save, {'attr':{'class':'btn btn-secondary'}}) }}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+    {{ form_end(fb) }}
+
+{% endblock %}

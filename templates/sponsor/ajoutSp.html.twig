@@ -1,0 +1,48 @@
+{% extends 'baseBack.html.twig' %}
+{% block body %}
+
+    <div class="card">
+        <div class="card-header">
+            <div class="mb-3">
+                <a class="" href="{{ path('afficheSp') }}">
+                    Liste Des Sponsors
+                </a>
+            </div>
+           <center> <h1 style="color:steelblue">Formulaire Sponsor : Sponsor</h1> </center>
+            <br>
+
+
+
+
+    {# {{ form(g) }} #}
+
+    {{ form_start(g,{'attr': {'novalidate': 'novalidate'}} ) }}
+            <center>
+
+  <table   >
+      <tr>
+          <td>{{ form_label(g.nomS,"Nom du Sponsor") }}</td>
+          <td>{{ form_widget(g.nomS,{'attr':{'class':'form-control'}}) }}</td>
+          <td> {{ form_errors(g.nomS) }}</td>
+      </tr>
+      <tr>
+          <td>{{ form_label(g.logoS,"Logo") }}</td>
+          <td>{{ form_widget(g.logoS,{'attr':{'class':'form-control'}})}}</td>
+          <td>{{ form_errors(g.logoS) }}</td>
+      </tr>
+
+
+
+  </table>
+                <br>
+
+    {{ form_end(g) }}
+            </center>
+
+
+
+        </div>
+    </div>
+
+
+    {% endblock %}

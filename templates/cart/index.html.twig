@@ -1,0 +1,18 @@
+
+    <table class="ct">
+        {% for item in items %}
+
+        <tr>
+            <td><a href="{{ path('cart_remove',{'id':item.product.id}) }}"><i class="fa fa-close" aria-hidden="true"></i></a></td>
+            <td class="info">
+                <img class="product-image" src="{{  asset('uploads/img/' ~ item['product'].img) }}" alt="product-image">
+                <em>Men's T-Shirt<br><em class="price">{{ item['product'].prix }} DT</em></em>
+            </td>
+        </tr>
+
+        {% endfor %}
+    </table>
+    <div class="wrap">
+        <div class="total-text">Subtotal: </div>
+        <div class="total-digit">{{ total }} DT</div>
+    </div>

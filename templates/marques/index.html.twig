@@ -1,0 +1,35 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block body %}
+
+    <div class="card flex-fill">
+        <div class="card-header">
+            <div class="mb-3">
+                <a class="" href="{{ path('ajoutm') }}">
+                    Ajout une Marque
+                </a>
+            </div>
+            <center> <h1>La liste des Marques</h1></center>
+            <br>
+            <table class="table table-hover my-0">
+                <thead>
+                <tr>
+                    <th class="d-none d-xl-table-cell">Nom Marque</th>
+                    <th class="d-none d-xl-table-cell">Action1</th>
+                    <th class="d-none d-xl-table-cell">Action2</th>
+                </tr>
+                </thead>
+                {% for m in k %}
+
+                <tr>
+                    <td class="d-none d-xl-table-cell">{{ m.nomM }}</td>
+                    <td class="d-none d-xl-table-cell">  <form action="{{path('modifm',{'id':m.id}) }}"><button class="btn btn-success" role="button"><span class="text">Modifier</span></button></form> </td>
+
+                    <td class="d-none d-xl-table-cell"> <form action="{{path('suppm',{'id':m.id}) }}"> <button class="btn btn-success" role="button"><span class="text">Supprimer</span></button></form> </td>
+                    {% endfor %}
+                </tr>
+
+            </table>
+        </div>
+    </div>
+{% endblock %}

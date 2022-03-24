@@ -1,0 +1,54 @@
+<li class="nav-item dropdown">
+    <a class="nav-icon dropdown-toggle" href="#" id="alertsDropdown" data-bs-toggle="dropdown">
+        <div class="position-relative">
+            <i class="align-middle" data-feather="bell"></i>
+            {% set i=0 %}
+            {% if qte != null %}
+                {%  for q in qte %}
+                    {%  set i=i+1 %}
+                    <span class="indicator">{{ i }}</span>
+                {% endfor %}
+            {% else %}
+                <p></p>
+            {% endif %}
+
+        </div>
+    </a>
+    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0" aria-labelledby="alertsDropdown">
+        <div class="dropdown-menu-header">
+            {% set j=0 %}
+            {% if qte != null %}
+                {%  for q in qte %}
+                    {%  set j=j+1 %}
+                    {{ j }} New Notifications
+                {% endfor %}
+            {% else %}
+                0 New Notifications
+            {% endif %}
+        </div>
+        <div class="list-group">
+            {% set k=0 %}
+            {% if qte != null %}
+                {%  for q in qte %}
+                    <a href="{{ path('notification',{'id':q.id}) }}" class="list-group-item">
+                        <div class="row g-0 align-items-center">
+                            <div class="col-2">
+                                <i class="text-danger" data-feather="alert-circle"></i>
+                            </div>
+                            <div class="col-10">
+                                <div class="text-dark"> Produit  id: {{ q.id}} et du nom "{{  q.nomP }}" et de quantite= {{ q.qte}} </div>
+
+                            </div>
+                        </div>
+                    </a>
+                {% endfor %}
+            {% else %}
+                <p></p>
+            {% endif %}
+
+        </div>
+        <div class="dropdown-menu-footer">
+            <a href="#" class="text-muted">Show all notifications</a>
+        </div>
+    </div>
+</li>

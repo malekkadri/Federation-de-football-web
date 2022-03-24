@@ -1,0 +1,54 @@
+{% extends 'baseBack.html.twig' %}
+{% block body %}
+    <div class="card">
+        <div class="card-header">
+            <div class="mb-3">
+                <a class="" href="{{ path('afficheCl') }}">
+                    Liste Des Clus
+                </a>
+            </div>
+            <center> <h1 style="color:steelblue">Formulaire Club : Club</h1> </center>
+
+
+
+            {# {{ form(g) }} #}
+            {{ form_start(g,{'attr': {'novalidate': 'novalidate'}} ) }}
+            <center>
+                <table  >
+                    <tr>
+                        <td>{{ form_label(g.nomc,"Nom de club") }}</td>
+                        <td>{{ form_widget(g.nomc,{'attr':{'class':'form-control'}}) }}</td>
+                        <td> {{ form_errors(g.nomc) }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ form_label(g.president,"President") }}</td>
+                        <td>{{ form_widget(g.president,{'attr':{'class':'form-control'}}) }}</td>
+                        <td> {{ form_errors(g.president) }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ form_label(g.sponsor,"Sponsor") }}</td>
+                        <td>{{ form_widget(g.sponsor,{'attr':{'class':'form-control'}}) }}</td>
+                        <td> {{ form_errors(g.sponsor) }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ form_label(g.descr,"Description") }}</td>
+                        <td>{{ form_widget(g.descr,{'attr':{'class':'form-control'}})}}</td>
+                        <td>{{ form_errors(g.descr) }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ form_label(g.logo,"logo") }}</td>
+                        <td>{{ form_widget(g.logo,{'attr':{'class':'form-control'}})}}</td>
+                        <td>{{ form_errors(g.logo) }}</td>
+                    </tr>
+
+
+                </table>
+                <br>
+
+                {{ form_end(g) }}
+            </center>
+
+        </div>
+    </div>
+
+{% endblock %}

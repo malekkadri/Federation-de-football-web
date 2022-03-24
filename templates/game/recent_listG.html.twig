@@ -1,0 +1,45 @@
+<div class="main-breaking-news">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2 col-sm-3 col-xs-12 ">
+                    <div class="break-title">
+                        <span>Breaking news</span>
+                    </div>
+                </div>
+                <div class="col-md-10 col-sm-9 col-xs-12">
+                    <div id="main-breaking-list" class="carousel slide main-breaking-list" data-ride="carousel">
+                        <div class="carousel-inner" role="listbox">
+
+                            <div class="item active text-center">
+
+                                 <span class="news"> LATEST MATCHES </span>
+
+                            </div>
+
+                            {% for i in t %}
+                            <div class="item ">
+
+                                <span class="date">
+                                    <img src="{{ asset('uploads/' ~ i.tournoi.logo) }}" alt="" style="width: 30px" style="height:30px">     -     {{ i.dated |date('F j-Y-g:i a')}}<span>/</span>
+                                </span>
+                                    <span class="news"> <a href="{{ path('detailCl', { 'id': i.club1.id }) }}"><img src="{{ asset('uploads/' ~ i.club1.logo) }}" alt="" style="width: 30px" style="height:30px"></a> {{ i.club1 }} {{ i.r1 }}:{{ i.r2 }} {{ i.club1 }}  <a href="{{ path('detailCl', { 'id': i.club2.id }) }}"><img src="{{ asset('uploads/' ~ i.club2.logo) }}" alt="" style="width: 30px" style="height:30px"></a>. </span>
+
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <div class="arrow-wrap">
+                            <!-- Controls -->
+                            <a class="nav-arrow left-arrow" href="#main-breaking-list" role="button" data-slide="prev">
+                                <i class="fa fa-caret-left" aria-hidden="true"></i>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="nav-arrow right-arrow" href="#main-breaking-list" role="button" data-slide="next">
+                                <i class="fa fa-caret-right" aria-hidden="true"></i>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,10 @@
+<form action="{{path('ajoutc') }}"> <button> Ajouter eleve </button> </form>
+{% for f in c %}
+
+    {{ f.typeC}}
+
+    <form action="{{path('modifc',{'id':f.id}) }}"> <button> modifier </button> </form>
+
+    <form action="{{path('suppc',{'id':f.id}) }}"> <button> supprimer </button> </form>
+
+{% endfor %}

@@ -1,0 +1,50 @@
+{% extends 'baseBack.html.twig' %}
+{% block body %}
+
+<div class="card flex-fill">
+    <div class="card-header">
+        <div class="mb-3">
+            <a class="" href="{{ path('ajoutS') }}">
+             <button class="btn btn-primary btn-sm">Ajout une Stade</button>
+            </a>
+              <div>
+  <br>      
+                    </div>
+        </div>
+
+
+
+        <center> <h1>La liste des Stades</h1></center>
+    <table class="table table-hover my-0">
+        <thead>
+        <tr>
+            <th class="d-none d-xl-table-cell">id</th>
+            <th class="d-none d-xl-table-cell">Name</th>
+            <th class="d-none d-xl-table-cell">Lieu</th>
+            <th class="d-none d-xl-table-cell">Etat</th>
+            <th class="d-none d-xl-table-cell">Nombre</th>
+            <th class="d-none d-xl-table-cell">Photo</th>
+            <th class="d-none d-xl-table-cell">Action1</th>
+            <th class="d-none d-xl-table-cell">Action2</th>
+        </tr>
+        </thead>
+        {% for i in e %}
+
+        <tr>
+            <td class="d-none d-xl-table-cell">{{ i.id }}</td>
+            <td class="d-none d-xl-table-cell">{{ i.noms }}</td>
+            <td class="d-none d-xl-table-cell">{{ i.lieu }}</td>
+            <td class="d-none d-xl-table-cell">{{ i.etat }}</td>
+            <td class="d-none d-xl-table-cell">{{ i.nbrP }}</td>
+            <td class="d-none d-xl-table-cell"><img src="{{ asset('uploads/' ~ i.Photo) }}" alt="" style="width: 80px" style="height:80px"> </td>
+            <td class="d-none d-xl-table-cell"> <form action="{{ path('SuppS',{'id':i.id}) }}"> <button class="btn btn-success">Supprimer</button> </form> </td>
+            <td class="d-none d-xl-table-cell"> <form action="{{ path('modifS',{'id':i.id}) }}"> <button class="btn btn-success">Modifier</button> </form> </td>
+            {% endfor %}
+        </tr>
+
+    </table>
+   <a href="{{ path('llistpdf') }}"> <button class="btn btn-primary btn-sm">Imprimer</button></a>
+</div>
+</div>
+
+{% endblock %}

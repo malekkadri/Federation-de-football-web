@@ -1,0 +1,74 @@
+
+                    {% set nbClient = 0 %}
+                    {% set nbAdmin = 0 %}
+                    {% for i in users %}
+                        {% if i.role|lower == "client" %}
+                            {% set nbClient=nbClient+1 %}
+                        {% else %}
+                            {% set nbAdmin = nbAdmin+1 %}
+                        {% endif %}
+                        {% endfor %}
+
+    <div id="GraphUser" style="height: 300px"></div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#myInput").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+
+
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5.2.2/dist/echarts.min.js"></script>
+    <script type="text/javascript">
+        var dom = document.getElementById("GraphUser");
+        var myChart2 = echarts.init(dom);
+        var app = {};
+
+        var graphUser;
+        graphUser = {
+            animation:{},
+            tooltip: {
+                trigger: 'item',
+            },
+            animation:true,
+            series: [
+                {
+                    type: 'pie',
+                    radius:['40%', '60%'],
+                    data: [
+                        {value: {{ nbAdmin }}, name: 'Admins',itemStyle: {color: "#aaadaa"}},
+                        {value: {{ nbClient }}, name: 'Clients',itemStyle: {color: "#58AE05"}},
+                    ],
+                    labelLine: {
+                        show: true
+                    },
+                    label:{
+                        show: true,
+                        color: "black",
+                        formatter: function(d) {
+                            return d.name+": "+d.value;
+                        }
+                    },
+                    emphasis: {
+                        itemStyle: {
+                            shadowBlur: 10,
+                            shadowOffsetX: 0,
+                            shadowColor: 'rgba(255, 255, 255, 1)'
+                        }
+                    }
+                }
+            ]
+        };
+
+        if (graphUser && typeof graphUser === 'object') {
+            myChart2.setOption(graphUser);
+        }
+    </script>
+

@@ -1,0 +1,45 @@
+{% extends 'baseBack.html.twig' %}
+{% block body %}
+
+    <div class="card flex-fill">
+        <div class="card-header">
+            <div class="mb-3">
+                <a class="" href="{{ path('ajoutCl') }}">
+                    Ajout un club
+                </a>
+                <a href="{{ path('pdfC') }}"> <button class="btn btn-primary btn-sm">Imprimer</button></a>
+            </div>
+            <center> <h1>La liste des clubs</h1></center>
+            <br>
+            <table class="table table-hover my-0">
+                <thead>
+                <tr>
+                    <th class="d-none d-xl-table-cell">id</th>
+                    <th class="d-none d-xl-table-cell">Photo</th>
+                    <th class="d-none d-xl-table-cell">Name</th>
+                    <th class="d-none d-xl-table-cell">President</th>
+                    <th class="d-none d-xl-table-cell">Sponsor</th>
+                    <th class="d-none d-xl-table-cell">Description</th>
+                    <th class="d-none d-xl-table-cell">Action1</th>
+                    <th class="d-none d-xl-table-cell">Action2</th>
+
+                </tr>
+                </thead>
+                {% for i in e %}
+
+                <tr>
+                    <td class="d-none d-xl-table-cell">{{ i.id }}</td>
+                    <td class="d-none d-xl-table-cell"><img src="{{ asset('uploads/' ~ i.logo) }}" alt="" style="width: 80px" style="height:80px"> </td>
+                    <td class="d-none d-xl-table-cell">{{ i.nomc }}</td>
+                    <td class="d-none d-xl-table-cell">{{ i.president }}</td>
+                    <td class="d-none d-xl-table-cell">{{ i.sponsor }}</td>
+                    <td class="d-none d-xl-table-cell">{{ i.descr }}</td>
+                    <td class="d-none d-xl-table-cell"> <form action="{{ path('SuppCl',{'id':i.id}) }}"> <button class="btn btn-success">Supprimer</button> </form> </td>
+                    <td class="d-none d-xl-table-cell"> <form action="{{ path('modifCl',{'id':i.id}) }}"> <button class="btn btn-success">Modifier</button> </form> </td>
+                    {% endfor %}
+                </tr>
+
+            </table>
+        </div>
+    </div>
+{% endblock %}

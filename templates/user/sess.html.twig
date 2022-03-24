@@ -1,0 +1,23 @@
+{% if user == null %}
+    <a href="#other"><span>Login</span></a>
+    <ul>
+        <li><a href="{{ path('login') }}"><span>Sign IN</span></a></li>
+        <li><a href="{{ path('UserRegister') }}"><span>Sign up</span></a></li>
+
+    </ul>
+{% else %}
+    <a href="{{ path('logout') }}"><span>Logged by  {{ user[1] }}</span></a>
+    <ul>
+
+        {% if user[3] != 'client' %}
+        <li><a href="{{ path('dashboard') }}"><span>dashboard</span></a></li>
+        {% endif %}
+        {% if  app.request.attributes.get('_route') =='commandef'  %}
+        <li class="active">
+            {% else %}
+        <li>
+            {% endif %}
+        <a href="{{ path('commandef') }}"><span>Orders</span></a></li>
+        <li><a href="{{ path('logout') }}"><span>Logout</span></a></li>
+    </ul>
+{% endif %}

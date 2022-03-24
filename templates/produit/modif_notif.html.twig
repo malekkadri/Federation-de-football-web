@@ -1,0 +1,65 @@
+
+{% extends 'baseBack.html.twig' %}
+{% block body %}
+
+
+    <main class="content">
+        <div class="container-fluid p-0">
+
+            <div class="mb-3">
+                <h1 class="card  text-center ">Update Quantite</h1>
+
+            </div>
+            <div class="row">
+                <div class="col-12 col-lg-6">
+                    <div class="card">
+                        <div class="card">
+                            {% form_theme (f) 'form_table_layout.html.twig' %}
+
+                            {{ form_start(f, {'attr': {'novalidate': 'novalidate'}} ) }}
+
+                            <div class="card ">
+                                <div class="card-body">
+                                    <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
+                                        <thead>
+                                        <tr>
+                                            <td><h5 class="card-title ">Qunatite:</h5>{{ form_widget(f.qte, {'attr': {'class': 'form-control'}}) }}{{ form_errors  (f.qte) }}</td>
+                                        </tr>
+
+
+                                        </thead>
+                                        <tbody  class="card-header" data-prototype="
+">
+
+                                        </tbody>
+
+                                    </table>
+
+                                </div>
+
+
+                                <button class="btn btn-secondary ">Update</button>
+
+
+                            </div>
+
+
+
+
+
+
+
+                            {{ form_end(f) }}
+
+                            <form action="{{ path('suppp',{'id':id}) }}" >
+                                <button type="submit" class="btn btn-success"> supprimer Produit</button>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+{% endblock %}

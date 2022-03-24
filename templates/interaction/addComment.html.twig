@@ -1,0 +1,31 @@
+{% extends 'interaction/index.html.twig' %}
+ {% block decide %}
+     {{form_start(fb,{'attr': {'novalidate': 'novalidate'}} ) }}
+        <div class="leave-comment-wrap">
+            <h4>Leave a comment</h4>
+
+            <div class="row">
+
+
+                <div class="col-md-12">
+                    <div class="item">
+                        <label>
+                            <span>Your comment </span>
+                            {{form_widget(fb.descrp , {'attr':{'class':'item','type':'textarea'}})}}
+                            {{ form_errors(fb.descrp) }}
+                        </label>
+                    </div>
+                </div>
+                <div class="col-md-12">
+
+                    {{form_widget(fb.save, {'attr':{'display':'none'}}) }}
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+     {{ form_end(fb) }}
+{% endblock %}
+
+

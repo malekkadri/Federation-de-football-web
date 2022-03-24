@@ -1,0 +1,109 @@
+{% extends 'baseFront.html.twig' %}
+{% block  title %}
+
+
+    {% for i in c %}
+
+
+            <li>
+                <a href="{{ asset(path("affiches",{'id':i.id})) }}"><span><img src="{{ asset('uploads/' ~ i.logo) }}" alt="" style="width: 40px" style="height:40px"> {{ i.nomt }} <i class="fa fa-long-arrow-right" aria-hidden="true"></i></span></a>
+                <ul>
+                    <li><a href="{{ path('afficheGFD',{'id':i.id}) }}"><span>Matches</span></a></li>
+                    <li><a href="{{ path('afficheCls',{'id':i.id}) }}"><span>Standings</span></a></li>
+
+                </ul>
+            </li>
+
+
+    {% endfor %}
+    {% endblock %}
+
+{% block match %}
+<section class="image-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="info">
+                    <div class="wrap">
+                        <ul class="breadcrumbs">
+                            <li>Main</a>/</li>
+                            <li>Arbitres</li>
+                        </ul>
+                        <h1>Arbitres</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block body %}
+
+
+<div class="club-top-info">
+    <div class="club-staff-top">
+    <div class="container">
+    <div class="row">
+    <div class="col-md-12">
+        <h4>Arbitre</h4>
+    </div>
+        {% for i in e %}
+    <div class="staff-box">
+    <div class="col-md-4  col-sm-6 col-xs-12">
+        <a href="{{ path('detailAr', { 'id': i.id }) }}" class="item">
+            <span class="info">
+                <span class="name">{{ i.nomA }}</span>
+                <span class="position">Arbitre</span>
+                <span class="number">{{ i.nbe }}</span>
+            </span>
+            <img src="{{ asset('uploads/' ~ i.image) }}" alt="" style="width: 300px" style="height:300px">
+
+        </a>
+    </div>
+    </div>
+        {% endfor %}
+    </div> </div> </div></div>
+
+
+
+{#
+    <div class="card flex-fill">
+        <div class="card-header">
+            <center> <h1>La liste des Arbitres</h1></center>
+            <table class="table table-hover my-0">
+                <thead>
+                <tr>
+
+                    <th class="d-none d-xl-table-cell">Photo</th>
+                    <th class="d-none d-xl-table-cell">Name</th>
+                    <th class="d-none d-xl-table-cell">Nombre d'experience</th>
+                    <th class="d-none d-xl-table-cell">Description</th>
+                    <th class="d-none d-xl-table-cell"></th>
+
+                </tr>
+                </thead>
+                {% for i in e %}
+
+                <tr>
+
+                    <td class="d-none d-xl-table-cell"><img src="{{ asset('uploads/' ~ i.image) }}" alt="" style="width: 80px" style="height:80px"> </td>
+                    <td class="d-none d-xl-table-cell">{{ i.nomA }}</td>
+                    <td class="d-none d-xl-table-cell">{{ i.nbe }}</td>
+                    <td class="d-none d-xl-table-cell">{{ i.descrp }}</td>
+                    {#  <td class="d-none d-xl-table-cell"> <form action="{{ path('SuppS',{'id':i.id}) }}"> <button class="btn btn-success">Supprimer</button> </form> </td>
+                    <td class="d-none d-xl-table-cell"> <form action="{{ path('modifS',{'id':i.id}) }}"> <button class="btn btn-success">Modifier</button> </form> </td> #}
+                  {#  {% endfor %}
+                </tr>
+
+            </table>
+        </div>
+    </div>
+#}
+
+    <!--MAIN MATCH SHEDULE END-->
+
+
+
+
+{% endblock %}

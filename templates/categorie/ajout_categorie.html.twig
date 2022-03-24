@@ -1,0 +1,21 @@
+{% extends 'baseBack.html.twig' %}
+
+{% form_theme f 'bootstrap_4_layout.html.twig' %}
+
+{% block body%}
+
+    {{ form_start(f,{'attr':{'novalidate':'novalidate'}} ) }}
+
+
+    {{ form_widget(f) }}
+
+    <br>
+    <button type="submit" class="btn btn-success"> Ajouter Categorie</button>
+
+    {{ form_end(f)}}
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,84 @@
+{% extends 'baseFront.html.twig' %}
+{% block match %}
+    <section class="image-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="info">
+                        <div class="wrap">
+                            <ul class="breadcrumbs">
+                                <li>Main</a>/</li>
+                                <li>Classement</li>
+                            </ul>
+                            <h1>Classement</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block body %}
+    <div class="club-top-info">
+
+<br><br><br>
+<div class="col-md-12 col-sm-12 col-xs-12 overflow-scroll standings-table">
+
+    <div class="tab-content">
+        <div class="tab-pane fade in active" id="2017" role="tabpanel">
+            <table class="standing-full">
+                <tr>
+                    <th>club</th>
+
+                    <th>points</th>
+                    <th>form</th>
+
+                </tr>
+
+
+
+                {% for i in c |sort((a, b) => a.pts <= b.pts) %}
+
+
+
+
+
+                <tr >
+                    <td class="up">
+                        <i class="fa fa-caret-up" aria-hidden="true"></i> <span class="team"><img src="{{   asset('uploads/' ~ i.club.logo) }}" width="30" height="30" alt=""> </span>{{ i.club.nomC }}
+                    </td>
+
+                    <td class="points"><span>{{  i.pts}}</span></td>
+
+                    <td class="form">
+{% if i.game1  %}
+
+    <span class="win">W</span>
+{% else %}
+    <span class="lose">L</span>
+{% endif %}
+                        {% if i.game3  %}
+
+                            <span class="drawn">D</span>
+
+                        {% endif %}
+                        {% if i.game1  %}
+
+                            <span class="win">W</span>
+                        {% else %}
+                            <span class="lose">L</span>
+                        {% endif %}
+
+
+                    </td>
+                    {% endfor %}
+                </tr>
+
+
+            </table>
+
+        </div>
+    </div>
+
+{% endblock %}

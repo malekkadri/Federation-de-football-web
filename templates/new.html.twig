@@ -1,0 +1,23 @@
+{% for f in date %}
+
+
+    <div class="col-md-3 col-sm-6">
+        <div class="store-list-item">
+            <div>
+                <a href="{{ path('product_page',{'id':f['product'].id}) }}">
+                    <span class="store-badge new">new</span>
+                    <img src="{{  asset('uploads/img/' ~ f['product'].img) }}" width="350px" height="300px" alt="product">
+                </a>
+                <div class="info">
+                    <span class="name">{{ f['product'].nomp}} </span>
+                    <span class="price">{{ f['product'].prix }} dt</span>
+                    <div class="btn-wrap">
+
+                        <a href="{{ path('product_page',{'id':f['product'].id}) }}"> <button class="btn small"> Details</button></a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endfor %}

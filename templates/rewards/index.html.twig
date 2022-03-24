@@ -1,0 +1,78 @@
+
+
+{% extends 'baseBack.html.twig' %}
+
+{% block body %}
+
+    <script>
+    function myFunctionred(x) {
+
+
+    let ele = document.getElementById('containerre');
+    ele.innerHTML="";
+    $.ajax({
+
+    url: 'listRD',
+
+
+    success: function (response) {
+    ele.innerHTML=response;
+    // Change #total text
+    $('#total').text(response.total);
+    }
+    });
+
+
+
+    }
+    function myFunctionrea(x) {
+
+
+    let ele = document.getElementById('containerre');
+    ele.innerHTML="";
+    $.ajax({
+
+    url: 'listRA',
+
+
+    success: function (response) {
+    ele.innerHTML=response;
+    // Change #total text
+    $('#total').text(response.total);
+    }
+    });
+
+
+
+    }
+    </script>
+<div class="row">
+    <div class="col-12 col-lg-8 col-xxl-9 d-flex">
+        <div class="card flex-fill">
+            <div class="card-header">
+
+                <h5 class="card-title mb-0">Listes Des Rewards</h5>
+                <br>
+                <form action="{{ path('statR') }}"><button class="btn btn-info"> stat   </button></form>
+            </div>
+            <div class="cart-total">
+                <div class="delivery-list">
+
+                    <label onclick="myFunctionrea(this)" id='btntria' class="item">
+                        <input name="del-check" type="radio">
+                        <span class="name">asc Prix</span>
+                    </label>
+                    <label onclick="myFunctionred(this)" id='btntrid' class="item">
+                        <input name="del-check" type="radio">
+                        <span class="name">desc Prix</span>
+                    </label>
+                </div>
+            </div>
+<div id = "containerre">
+            {{ render('App\Controller:Rewards:listRB') }}
+        </div>
+        </div>
+    </div>
+
+    {% endblock %}
+

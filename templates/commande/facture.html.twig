@@ -1,0 +1,322 @@
+
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <style type="text/css">
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap');
+
+        body{
+            margin: 0;
+            padding: 0;
+            font-size: 16px;
+            font-weight: 300;
+            width: 100%;
+            background: rgb(204,204,204);
+            font-family: 'Roboto Condensed', sans-serif;
+        }
+        h2,h4,p{
+            margin: 0;
+        }
+        .page{
+            background: #fff;
+            display: block;
+            margin: 3rem auto 3rem auto;
+            position: relative;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+        }
+        .page[size="A4"]{
+            width: 21cm;
+            height: 29.7cm;
+            overflow-x:hidden ;
+        }
+
+        .top-section{
+            color: #fff;
+            padding: 20px;
+            height: 115px;
+            background-color: #f4c63d;
+        }
+
+        .top-section h2{
+            font-size: 42px;
+            margin-bottom: 10px;
+            font-weight: 400;
+        }
+        .top-section .contact,
+        .top-section .address{
+            width: 50%;
+            height: 100%;
+            float: left;
+        }
+
+        .top-section .adress-content{
+            max-width: 285px;
+
+        }
+        .contact .contact-content{
+            max-width: 270px;
+            float: right;
+            margin-top: 32px;
+        }
+
+        .contact-content .email,
+        .contact-content .number{
+            display: block ;
+        }
+
+        .contact-content .email span,
+        .contact-content .number span{
+            float: right;
+            margin-left: 30px;
+        }
+
+        .billing-inovice{
+            padding: 20px;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .billing-inovice .title{
+            font-weight: 400;
+            float: left;
+        }
+
+        .billing-inovice .des{
+            font-weight: 400;
+            float: right;
+        }
+
+        .billing-inovice .code{
+            font-weight: 700;
+            text-align: right;
+
+        }
+
+        .billing-inovice .issue{
+            text-align: right;
+            font-size: 15px;
+        }
+
+        .billing-to{
+            padding: 20px;
+            margin-top: 40px;
+        }
+        .billing-to .title{
+            font-weight: 400;
+            font-size: 20px;
+            margin-bottom: 7px;
+        }
+        .billing-to .billed-sec{
+            width: 50%;
+            float: left;
+            font-size: 18px;
+            margin-bottom: 25px;
+        }
+
+        .billing-to .sub-title,
+        .billing-to .name {
+            font-weight: 400;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .billing-to .ship-add{
+            max-width: 300px;
+        }
+        .table{
+            padding: 0 20px;
+
+        }
+        .table table{
+            width: 100%;
+        }
+
+        .table table,th,td{
+            padding: 5px;
+            text-align: center;
+            border: 1px solid #616161;
+            border-collapse: collapse;
+        }
+
+        .table tr th{
+            font-size: 18px;
+            font-weight: 400;
+        }
+
+        .table table tr:first-child{
+            color: #fff;
+            background-color: #f4c63d;
+
+        }
+
+        .table tr th:nth-child(2),
+        .table tr td:nth-child(2){
+            text-align: left;
+            width: 230px;
+
+        }
+
+
+        .bottom-section{
+            margin-top: 15px;
+            padding: 20px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+
+        }
+
+        .bottom-section .status-content h4{
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 10px;
+
+        }
+
+        .bottom-section .status.free::before,
+        .bottom-section .status.paid::before{
+            padding: 5px 10px;
+            border-radius:5px;
+            margin-bottom: 8px;
+            display: inline-block;
+            text-transform: uppercase;
+        }
+
+        .bottom-section .status.free::before{
+
+            content: "paid";
+            background-color: #00cc00;
+        }
+
+        .bottom-section .thx{
+            text-align: center;
+            margin-top: 10px;
+        }
+        .top-section .image
+        {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="page" size="A4">
+    <div class="top-section">
+        <div class="address">
+            <div class="adress-content">
+                <h2>Turbo Devs</h2>
+                <p>221 Baker street,International Market,Hatirpul,Bagherpul,Dhaka,Bangladesh</p>
+            </div>
+        </div>
+
+        <div class="contact">
+            <div class="contact-content">
+                <div class="email"> Email: <span class="span">turob_devs@gmail.com</span></div>
+                <div class="number"> Number: <span class="span">71-500-600</span></div>
+            </div>
+        </div>
+    </div>
+    <div class="billing-inovice">
+        <div class="title">
+            Billing Inovice
+
+        </div>
+        <div class="des">
+            <p class="code">#1234567-CDEJ763</p>
+            <p class="issue"> Issued: <span> {{ datec | date('d-m-y') }}</span></p>
+
+        </div>
+    </div>
+    <div class="billing-to">
+        <div class="title">Billed TO</div>
+        <div class="billed-sec">
+            <div class="name">
+                {{ user.username }}
+            </div>
+            <p>{{ user.email }}</p>
+            <p>+216 55200699</p>
+        </div>
+
+
+
+        <div class="billed-sec">
+            <div class="sub-title">Shipping Adress</div>
+            <div class="ship-add">221 Baker street,International Market,Hatirpul,Bagherpul,Dhaka,Bangladesh</div>
+        </div>
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <div class="table">
+
+        <table>
+            <tr>
+                <th>#</th>
+                <th>Product Name</th>
+                <th>Product Size</th>
+                <th>Product Color</th>
+                <th>Quantiy</th>
+
+                <th>Unit Price</th>
+                <th>Subtotal </th>
+
+
+            </tr>
+            {% set x=0 %}
+            {% for i in commande %}
+                {% set x=x+1 %}
+                <tr>
+                    <td> {{ x }} </td>
+                    <td>{{ i['product'].nomP }}</td>
+                    <td>{{ i.taille }}</td>
+                    <td>{{ i['product'].couleur }}</td>
+                    <td> {{ i.quantity}} </td>
+
+                    <td>{{ i['product'].prix }}</td>
+                    <td>{{ i['product'].prix * i.quantity }}</td>
+
+
+                </tr>
+            {% endfor %}
+
+            <tr>
+                <td style="visibility: collapse"></td>
+                <td style="visibility: collapse"></td>
+                <td style="visibility: collapse"></td>
+                <td style="visibility: collapse"></td>
+                <td style="visibility: collapse"></td>
+                <td style="visibility: collapse"></td>
+                <td>Total: {{ total }}</td>
+            </tr>
+
+
+        </table>
+    </div>
+
+    <div class="bottom-section">
+        <div class="status-content">
+            <h4> Payment Status </h4>
+            <p class="status free"></p>
+            <p> Payment Method: <span> ssl commerz </span></p>
+            <p class="thx">Thx for your purchase </p>
+        </div>
+    </div>
+</div>
+</body>
+</html>

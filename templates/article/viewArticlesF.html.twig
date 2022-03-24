@@ -1,0 +1,158 @@
+{% extends 'baseFront.html.twig' %}
+{% block  title %}
+
+
+    {% for i in c %}
+
+
+            <li>
+                <a href="{{ asset(path("affiches",{'id':i.id})) }}"><span><img src="{{ asset('uploads/' ~ i.logo) }}" alt="" style="width: 40px" style="height:40px"> {{ i.nomt }} <i class="fa fa-long-arrow-right" aria-hidden="true"></i></span></a>
+                <ul>
+                    <li><a href="{{ path('afficheGFD',{'id':i.id}) }}"><span>Matches</span></a></li>
+                    <li><a href="{{ path('afficheCls',{'id':i.id}) }}"><span>Standings</span></a></li>
+
+                </ul>
+            </li>
+
+
+    {% endfor %}
+    {% endblock %}
+{% block match %}
+    <section class="image-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="info">
+                        <div class="wrap">
+                            <ul class="breadcrumbs">
+                                <li><a href="index-2.html">Main</a>/</li>
+                                <li>Category</li>
+                            </ul>
+                            <h1>Category</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block body %}
+<!--CONTENT BEGIN-->
+
+<div class="content">
+    <div class="container">
+        <div class="row row-offcanvas row-offcanvas-left">
+
+            <!--SIDEBAR BEGIN-->
+            <section class="sidebar col-xs-6 col-md-3 sidebar-offcanvas" id="sidebar">
+                <div class="sidebar-menu-wrap">
+
+                    <ul class="categories-list">
+
+                        <li>
+                            <a href="#"><span class="count"></span>Order By</a>
+                            <ul>
+                                <li><a onclick="myFunctiona(this)" id='btntria'><span class="count"><i class="glyphicon glyphicon-arrow-up"></i> </span>ASC Date</a></li>
+                                <li><a onclick="myFunctiond(this)" id='btntrid'><span class="count"><i class="glyphicon glyphicon-arrow-down"></i></span>DESC Date</a></li>
+                                <li><a onclick="myFunctionan(this)" id='btntrian'><span class="count"><i class="glyphicon glyphicon-arrow-up"></i> </span>ASC Title</a></li>
+                                <li><a onclick="myFunctiondn(this)" id='btntridn'><span class="count"><i class="glyphicon glyphicon-arrow-down"></i></span>DESC Title</a></li>
+
+                            </ul>
+                        </li>
+
+                    </ul>
+                </div>
+
+
+<script>
+    var delayInMilliseconds = 1000;
+   function searchar() {
+        let searchString = document.getElementById('searchArticles').value; // recuperation de l'input de la recherche
+        const elements = document.getElementsByName('elements') //recuperation de la reference du dom (liste des tr)
+        if (searchString.length!==0){
+            $.ajax({
+                url: '/searchx/'+searchString,
+                success: function (data) {
+                    console.log("data :",data)
+                    for (let i = 0; i < elements.length; i++){
+                        elements[i].style.display = "none";
+                    }
+                    for (let j = 0; j < data.length; j++) {
+                        $('#i'+data[j].id).show('slow');
+                    }
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    alert("erreur lors de la recuperation des données")
+                }
+            });
+        }else{
+            for (let i = 0; i < elements.length; i++){
+                elements[i].style.display = "revert";
+            }
+        }
+       setTimeout(function(){
+
+       },1000);
+    }</script>
+                <div class="sidebar-search-wrap">
+                    <h6>Search</h6>
+                    <form>
+                        <div class="wrap">
+                            <input onkeyup="searchar()" type="text" id="searchArticles" class="form-control" placeholder="Search">
+                            <button><i class="fa fa-search" aria-hidden="true"></i></button>
+                        </div>
+                    </form>
+                </div>
+
+
+                <!-- code HTML -->
+
+
+            </section>
+            <!--SIEDBAR END-->
+            <!--NEWS LIST BEGIN-->
+            <script type="text/javascript" src="{{ asset('testimp/degla.js') }}"></script>
+            <div class="news-list col-xs-12 col-md-9">
+                <p class="hidden-md hidden-lg">
+                    <button type="button" class="btn sidebar-btn" data-toggle="offcanvas" title="Toggle sidebar">sidebar</button>
+                </p>
+<div id = "containerar">
+    {% for i in a %}
+        <div class="item img-top" name="elements" id="{{'i'~ i.id }}">
+            <div class="img-wrap">
+                <div class="bage"><a href="#">News</a></div>
+                <a href="{{ path('interaction',{'id':i.id,'name':i.titre}) }}"><img src="{{ asset('uploads/img/' ~ i.img) }}" style="width:850px" style="height:600px" alt="post image"></a>
+            </div>
+            <div class="info">
+                <a href="{{ path('interaction',{'id':i.id,'name':i.titre}) }}" class="name">{{ i.titre}}</a>
+                <div class="wrap">
+                    <a href="{{ path('interaction',{'id':i.id,'name':i.titre}) }}">{{ i.datea |date('d-m-Y')}}</a> by <a href="#">{{ i.getUser().username}}</a>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    {% endfor %}
+
+
+</div>
+                <div class="pagination-wrap">
+                    <ul class="pagination">
+
+                        {{  knp_pagination_render(a)}}
+
+                    </ul>
+                </div>
+
+</div>
+
+            <!--NEWS LIST END-->
+
+
+        </div>
+    </div>
+</div>
+
+
+<!--CONTENT END-->
+{% endblock %}

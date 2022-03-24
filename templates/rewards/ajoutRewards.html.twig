@@ -1,0 +1,75 @@
+{% extends 'baseBack.html.twig' %}
+{% block body %}
+
+
+    <main class="content">
+        <div class="container-fluid p-0">
+
+            <div class="mb-3">
+                <h1 class="card  text-center ">Ajout Reward</h1>
+                <a class="badge bg-dark text-white ms-2" href="/afficheRB">
+                    Listes Des Rewards :
+                </a>
+            </div>
+            <div class="row">
+                <div class="col-12 col-lg-6">
+                    <div class="card">
+                        <div class="card">
+                            {% form_theme (r) 'form_table_layout.html.twig' %}
+
+                            {{ form_start(r ,{'attr': {'novalidate': 'novalidate'}} ) }}
+
+                            <div class="card ">
+                                <div class="card-body">
+                                    <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
+                                        <thead>
+                                        <tr>
+                                            <td><h5 class="card-title ">Rank :</h5>{{ form_widget(r.rank, {'attr': {'class': 'form-control'}}) }}{{ form_errors  (r.rank) }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><h5 class="card-title ">Trophe :</h5>{{ form_widget(r.trophe, {'attr': {'class': 'form-control'}}) }}{{ form_errors  (r.trophe) }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><h5 class="card-title ">Prix :</h5>{{ form_widget(r.prixR, {'attr': {'class': 'form-control'}}) }}{{ form_errors  (r.prixR) }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><h5 class="card-title ">Image :</h5>{{ form_widget(r.img, {'attr': {'class': 'form-control'}}) }}{{ form_errors  (r.img) }}</td>
+                                        </tr>
+
+                                            <td><h5 class="card-title ">Nom Tournoi :</h5>{{ form_widget(r.tournoi, {'attr': {'class': 'form-control'}}) }}{{ form_errors  (r.tournoi) }}</td>
+                                        </tr>
+
+                                        </thead>
+                                        <tbody  class="card-header" data-prototype="
+">
+
+                                        </tbody>
+
+                                    </table>
+
+                                </div>
+
+
+                                <button class="btn btn-secondary ">save</button>
+
+
+                            </div>
+
+
+
+
+
+
+
+                            {{ form_end(r) }}
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+{% endblock %}

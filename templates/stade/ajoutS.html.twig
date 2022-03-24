@@ -1,0 +1,63 @@
+{% extends 'baseBack.html.twig' %}
+{% block body %}
+
+    <div class="card">
+        <div class="card-header">
+            <div class="mb-3">
+                <a class="" href="{{ path('afficheS') }}">
+                    Liste Des Stades
+                </a>
+            </div>
+           <center> <h1 style="color:steelblue">Formulaire Stade : Stade</h1> </center>
+            <br>
+
+
+
+
+    {# {{ form(g) }} #}
+
+    {{ form_start(g,{'attr': {'novalidate': 'novalidate'}} ) }}
+            <center>
+
+  <table   >
+      <tr>
+          <td>{{ form_label(g.noms,"Nom du terrain") }}</td>
+          <td>{{ form_widget(g.noms,{'attr':{'class':'form-control'}}) }}</td>
+          <td> {{ form_errors(g.noms) }}</td>
+      </tr>
+      <tr>
+          <td>{{ form_label(g.lieu,"Adresse") }}</td>
+          <td>{{ form_widget(g.lieu,{'attr':{'class':'form-control'}})}}</td>
+          <td>{{ form_errors(g.lieu) }}</td>
+      </tr>
+      <tr>
+          <td>{{ form_label(g.etat,"Etat") }}</td>
+          <td>{{ form_widget(g.etat,{'attr':{'class':'form-control'}})}}</td>
+          <td>{{ form_errors(g.etat) }}</td>
+      </tr>
+      <tr>
+          <td>{{ form_label(g.nbrP,"nombre") }}</td>
+          <td> {{ form_widget(g.nbrP,{'attr':{'class':'form-control'}})}}</td>
+          <td>{{ form_errors(g.nbrP) }}</td>
+      </tr>
+      <tr>
+          <td>{{ form_label(g.photo,"photo") }}</td>
+          <td>{{ form_widget(g.photo,{'attr':{'class':'form-control'}})}}</td>
+          <td>{{ form_errors(g.photo) }}</td>
+      </tr>
+
+
+
+  </table>
+                <br>
+
+    {{ form_end(g) }}
+            </center>
+
+
+
+        </div>
+    </div>
+
+
+    {% endblock %}

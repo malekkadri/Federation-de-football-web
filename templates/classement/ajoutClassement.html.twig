@@ -1,0 +1,68 @@
+{% extends 'baseBack.html.twig' %}
+{% block body %}
+
+
+    <main class="content">
+        <div class="container-fluid p-0">
+
+            <div class="mb-3">
+                <h1 class="card  text-center ">Ajout Classement</h1>
+                <a class="badge bg-dark text-white ms-2" href="/afficheClassement">
+                    Listes Des classements :
+                </a>
+            </div>
+            <div class="row">
+                <div class="col-12 col-lg-6">
+                    <div class="card">
+                        <div class="card">
+                            {% form_theme (r) 'form_table_layout.html.twig' %}
+
+                            {{ form_start(r ,{'attr': {'novalidate': 'novalidate'}} ) }}
+
+                            <div class="card ">
+                                <div class="card-body">
+                                    <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
+                                        <thead>
+
+                                        <tr>
+                                            <td><h5 class="card-title ">Club participant :</h5>{{ form_widget(r.club, {'attr': {'class': 'form-control'}}) }}{{ form_errors  (r.club) }}</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td><h5 class="card-title ">Tournoi associé :</h5>{{ form_widget(r.tournoi, {'attr': {'class': 'form-control'}}) }}{{ form_errors  (r.tournoi) }}</td>
+                                        </tr>
+
+                                        </thead>
+                                        <tbody  class="card-header" data-prototype="
+">
+
+                                        </tbody>
+
+                                    </table>
+
+                                </div>
+
+
+                                <button class="btn btn-secondary ">save</button>
+
+
+                            </div>
+
+
+
+
+
+
+
+                            {{ form_end(r) }}
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+{% endblock %}

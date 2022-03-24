@@ -1,0 +1,96 @@
+{% extends 'article/viewArticleF.html.twig' %}
+
+{% block interact %}
+
+
+    <!--<textarea id = fik></textarea>
+    <button onclick="rep()">hide</button>-->
+{% set result = "NONE" %}
+    {% if us != null %}
+    {% for likea in comments %}
+        {%  if ( likea.getUser().username == us.username ) %}
+        {% if(likea.getType()=='up') %}
+            {% set result = "up" %}
+        {% endif %}
+
+        {% endif %}
+    {% endfor %}
+    {% endif %}
+
+
+
+    <div class="comments-wrap">
+        <h4>Comments</h4>
+        {% if us != null %}
+        {% if result == "NONE"  %}
+        <button onclick="myFunction(this)" id='btnAddProduct' class="fa fa-thumbs-up u" style="color:#606060" type="button"  data-id="{{ a.id }}">Like</button>
+        {% else %}
+        <button onclick="myFunction(this)"id='btnAddProduct' class="fa fa-thumbs-up l" style="color:#1E90FF" type="button"  data-id="{{ a.id }}">Like</button>
+        {% endif %}
+        {% endif %}
+       <!-- <i onclick="myFunction(this)" class="fa fa-thumbs-up"  href = "{#  path('addL',{'id':a.id}) #}"style="font-size:48px;color:grey"></i>-->
+        <div id='container'>
+            <p>
+                {{ render('App\Controller:Interaction:listinteractions'~x) }}
+            </p>
+        </div>
+
+
+        </div>
+
+{% block decide %}
+    {% if us != null %}
+        <div class="leave-comment-wrap">
+            <h4>Leave a comment</h4>
+
+            <div class="row">
+
+
+                <textarea id="commentbox{{a.id}}" class="md-textarea form-control"  rows="3" cols="1"></textarea>
+                <div class="col-md-12">
+
+                        <br>
+                     <button onclick="addCommentm(this,{{a.id}})"   class="btn btn-success"   type="button"  data-id="{{ a.id }}">Post Comment</button>
+                </div>
+            </div>
+
+        </div>
+    {% endif %}
+        {% endblock %}
+    </div>
+
+
+
+{% endblock %}
+
+{% block script %}
+{% set result = "NONE" %}
+
+
+    <script src="{{ asset('testimp/degla.js') }}"></script>
+
+
+
+
+    <script>
+        /*
+        $(document).ready(function() {
+            $('#btnAddProduct').click(function() {
+
+               if($('#btnAddProduct').hasClass("fa fa-thumbs-up l")) {
+
+             }
+
+
+
+            });
+
+
+        });
+       */
+    </script>
+
+    <script> src='jquery-3.1.0.js' </script>
+
+
+{% endblock %}

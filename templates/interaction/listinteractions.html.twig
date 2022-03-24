@@ -1,0 +1,97 @@
+{% for c in comments %}
+    {%  if c.getType()=='comment' %}
+
+        <div class="panel-heading" role="tab" id="heading{{ c.getIdi() }}">
+            <div class="comment-item">
+                <div  style = "text-align: left">
+                <div class="top">  </div>
+                <div class="avatar">
+
+                    <img src="{{ asset('uploads/img/' ~ c.getUser().img) }}" alt="author-avatar"></div>
+
+                </div>
+                <br>
+
+                <div class="info">
+                    <div class="date">
+                        25 Sep 2016 by {{ c.getUser().username }}
+
+                        <img src="{{ asset('uploads/img/' ~ c.getUser().badge.logoB) }}" style="width:40px" style="height:40px" >
+
+                    </div>
+                    <p>{{ c.getDescrp }}.</p>
+                    <!-- <textarea id = fik></textarea>
+                   <a onclick="rep()" class ="reply" href="#fik">reply</a>-->
+
+                    <!-- glyphicon glyphicon-plus -->
+                    {% if us != null %}
+                    <button onclick="upComment(this,{{a.id}},{{ c.getIdi()}})" class="glyphicon glyphicon-plus" style="background:none;border: none;padding: 0;" type="button" data-id="{{ a.id }}"></button>
+
+    {% if (c.getUser() == us or us[3] =="admin")   %}
+                    <button onclick="upUComment(this,{{ a.id }},{{c.getIdi()}})"    class="glyphicon glyphicon-pencil"  style="background:none;border: none;padding: 0;" type="button"  data-id="{{ a.id }}"></button>
+                    <button onclick="deleteComment(this,{{a.id}},{{ c.getIdi()}})"   class="fa fa-trash"  style="background:none;border: none;padding: 0;" type="button"  data-id="{{ a.id }}"></button>
+{% endif %}
+        {% endif %}
+                </div>
+                <div>
+                    <textarea id="replyubox{{c.getIdi()}}"  placeholder="Update Your Comment" class="md-textarea form-control" style="display:none" rows="3" cols="1"></textarea>
+                    <button id="replyub{{c.getIdi()}}" onclick="updateComment(this,{{a.id}},{{ c.getIdi()}})" class="btn btn-success" style="display:none" type="button" data-id="{{ a.id }}">save</button>
+
+                </div>
+                <div>
+                    <textarea id="replybox{{c.getIdi()}}" placeholder="Add Your Comment"class="md-textarea form-control" style="display:none" rows="3" cols="1"></textarea>
+                    <button id="replyb{{c.getIdi()}}" onclick="addComment(this,{{a.id}},{{ c.getIdi()}})" class="btn btn-success" style="display:none" type="button" data-id="{{ a.id }}">save</button>
+
+                </div>
+
+            </div>
+            <h4 id = "shr{{ c.getIdi() }}" class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{ c.getIdi() }}" aria-expanded="true" aria-controls="collapse{{ c.getIdi() }}">
+                    Show Replies
+                </a>
+            </h4>
+        </div>
+
+        <div id="collapse{{ c.getIdi() }}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading{{ c.getIdi() }}">
+            <div class="panel-body">
+                {% set x = 0  %}
+                {% for rep in comments %}
+
+                    {%  if (rep.getType() starts with 'reply?' )  %}
+                        {%  if  (rep.getType()|trim('reply?')) == c.getIdi() %}
+                            {% set x = x +1 %}
+                            <div id = "devs{{rep.getIdi()}}" class="comment-item answer pannel-body">
+
+                                <div class="avatar"><img src="{{ asset('uploads/img/' ~ c.getUser().img) }}" alt="author-avatar"></div>
+                                <div class="info">
+                                    <div class="date">
+                                        <a href="#">25 Sep 2016</a> by <a href="#">{{ rep.getUser().username }}</a>
+                                        <a href="#" class="quote"><img src="{{ asset('uploads/img/' ~ rep.getUser().badge.logoB) }}" style="width:40px" style="height:40px" ></a>
+                                    </div>
+                                    <p>{{ rep.getDescrp }}..</p>
+                                    {% if us != null %}
+                                    {% if (rep.getUser() == us or us[3] =="admin")   %}
+                                    <button onclick="editupReply(this,{{a.id}},{{ rep.getIdi()}})"   class="glyphicon glyphicon-pencil"  style="background:none;border: none;padding: 0;" type="button"  data-id="{{ a.id }}"></button>
+                                    <button onclick="deleteReply(this,{{a.id}},{{ rep.getIdi()}})"   class="fa fa-trash"  style="background:none;border: none;padding: 0;" type="button"  data-id="{{ a.id }}"></button>
+                                        {% endif %}
+                                        {% endif %}
+                                    <div>
+                                        <textarea id="replyboxe{{rep.getIdi()}}" placeholder="Edit Your Comment"class="md-textarea form-control" style="display:none" rows="3" cols="1"></textarea>
+                                        <button id="replybe{{rep.getIdi()}}" onclick="updateCommentr(this,{{a.id}},{{ rep.getIdi()}})" class="btn btn-success" style="display:none" type="button" data-id="{{ a.id }}">save</button>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+                {% if (x == 0 ) %}
+                    <script> document.getElementById('shr{{ c.getIdi() }}').style.visibility='hidden' </script>
+
+                {% endif %}
+            </div>
+        </div>
+    {%  else %}
+    {% endif %}
+{% endfor %}

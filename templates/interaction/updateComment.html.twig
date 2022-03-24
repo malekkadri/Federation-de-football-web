@@ -1,0 +1,80 @@
+{% extends 'article/viewArticleF.html.twig' %}
+
+{% block interact %}
+    {{form_start(fb,{'attr': {'novalidate': 'novalidate'}} ) }}
+    <div class="comments-wrap">
+        <h4>Comments</h4>
+        {% for c in comments %}
+            {%  if c.getType()=='comment' %}
+                <div class="panel-heading" role="tab" id="heading{{ c.getIdi() }}">
+                    <div class="comment-item">
+                        <div class="avatar"><img src="images/common/author-avatar.jpg" alt="author-avatar"></div>
+                        <div class="info">
+                            <div class="date">
+                                25 Sep 2016 by {{ c.getUser().username }}
+                            </div>
+                            <p>{{ c.getDescrp }}.</p>
+                            <!-- <textarea id = fik></textarea>
+                           <a onclick="rep()" class ="reply" href="#fik">reply</a>-->
+                            <a href="{{ path('addReply',{'id':a.id,'?':'?','idc':c.getIdi()}) }}" class="reply">reply</a>
+                            <a href="{{ path('delComment',{'id':a.id,'?':'?','idc':c.getIdi()}) }}" class="reply">delete</a>
+                            <a href="{{ path('updateComment',{'id':a.id,'?':'?','idc':c.getIdi()}) }}" class="reply">update</a>
+                        </div>
+                    </div>
+                    <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{ c.getIdi() }}" aria-expanded="true" aria-controls="collapse{{ c.getIdi() }}">
+                            Show Replies
+                        </a>
+                    </h4>
+                </div>
+
+                <div id="collapse{{ c.getIdi() }}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading{{ c.getIdi() }}">
+                    <div class="panel-body">
+                        {% for rep in comments %}
+                            {%  if (rep.getType() starts with 'reply?' )  %}
+                                {%  if  (rep.getType()|trim('reply?')) == c.getIdi() %}
+                                    <div class="comment-item answer pannel-body">
+                                        <div class="avatar"><img src="images/common/author-avatar.jpg" alt="author-avatar"></div>
+                                        <div class="info">
+                                            <div class="date">
+                                                <a href="#">25 Sep 2016</a> by <a href="#">{{ rep.getUser().username }}</a>
+                                                <a href="#" class="quote">#</a>
+                                            </div>
+                                            <p>{{ rep.getDescrp }}..</p>
+                                            <a href="{{ path('updateComment',{'id':a.id,'?':'?','idc':rep.getIdi()}) }}" class="reply">update</a>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            {%  else %}
+            {% endif %}
+        {% endfor %}
+        <div class="leave-comment-wrap">
+            <h4>Leave a comment</h4>
+
+            <div class="row">
+
+
+                <div class="col-md-12">
+                    <div class="item">
+                        <label>
+                            <span>Edit Your  Comment </span>
+                            {{form_widget(fb.descrp , {'attr':{'class':'item','type':'textarea'}})}}
+                            {{ form_errors(fb.descrp) }}
+                        </label>
+                    </div>
+                </div>
+                <div class="col-md-12">
+
+                    {{ form_widget(fb.save, {'attr':{'class':'comment-submit'}}) }}
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    {{ form_end(fb) }}
+{% endblock %}

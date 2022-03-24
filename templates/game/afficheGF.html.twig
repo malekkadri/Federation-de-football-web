@@ -1,0 +1,135 @@
+{% extends 'baseFront.html.twig' %}
+{% block  title %}
+
+
+    {% for i in c %}
+
+
+            <li>
+                <a href="{{ asset(path("affiches",{'id':i.id})) }}"><span><img src="{{ asset('uploads/' ~ i.logo) }}" alt="" style="width: 40px" style="height:40px"> {{ i.nomt }} <i class="fa fa-long-arrow-right" aria-hidden="true"></i></span></a>
+                <ul>
+                    <li><a href="{{ path('afficheGFD',{'id':i.id}) }}"><span>Matches</span></a></li>
+                    <li><a href="{{ path('afficheCls',{'id':i.id}) }}"><span>Standings</span></a></li>
+
+                </ul>
+            </li>
+
+
+    {% endfor %}
+    {% endblock %}
+ {% block match %}
+     <div class="main-slider-section">
+         <div class="main-slider">
+             <div id="main-slider" class="carousel slide" data-ride="carousel" >
+                 <div class="carousel-inner" role="listbox">
+
+                     <div class="item active text-center">
+                         <div class="main-slider-caption">
+                             <div class="container">
+                                 <div class="row">
+                                     <div class="col-md-12">
+                                         <div class="team"> 
+                                         <img src="images/soccer/koora.png" alt="team-logo" style="width: 70px" style="height:70px">  Latest Match  <img src="images/soccer/koora.png" alt="team-logo" style="width: 70px" style="height:70px">
+
+                                         </div>
+                                         
+
+                                     </div>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+
+                     {% for i in e %}
+                     <div class="item ">
+
+                         <div class="main-slider-caption">
+                             <div class="container">
+                                 <div class="row">
+                                     <div class="col-md-12">
+                                         <div class="match-date">{{ i.tournoi }} - {{ i.dated |date('F j-Y-g:i a')}} / {{ i.stade}}</div>
+                                         <div class="team">  <a href="{{ path('detailCl', { 'id': i.club1.id }) }}"><img src="{{ asset('uploads/' ~ i.club1.logo) }}" alt="" style="width: 40px" style="height:40px"> </a> {{ i.club1}}
+                                             <div class="big-count">
+                                                 {{ i.r1}}:{{ i.r2}}
+                                             </div>
+                                             {{ i.club2}}   <a href="{{ path('detailCl', { 'id': i.club2.id }) }}"><img src="{{ asset('uploads/' ~ i.club2.logo) }}" alt="" style="width: 40px" style="height:40px"> </a>
+                                         </div>
+                                         <div class="match-date">Arbitre : {{ i.arbitre}}</div>
+                                          <div class="booking">
+                                        <a href="{{ path('detailG', { 'id': i.id }) }}">
+                                            Watch live
+                                        </a>
+                                    </div>
+                                     </div>
+                                 </div>
+                             </div>
+                         </div>
+
+                     </div>
+
+                     {% endfor %}
+
+                 <!-- Controls -->
+                 <a class="nav-arrow left-arrow" href="#main-slider" role="button" data-slide="prev">
+                     <i class="fa fa-angle-left" aria-hidden="true"></i>
+                     <span class="sr-only"></span>
+                 </a>
+                 <a class="nav-arrow right-arrow" href="#main-slider" role="button" data-slide="next">
+                     <i class="fa fa-angle-right" aria-hidden="true"></i>
+                     <span class="sr-only"></span>
+                 </a>
+                 
+                 </div>
+             </div>
+         </div>
+     </div>
+
+ {% endblock %}
+
+{% block body %}
+
+    <!--MAIN MATCH SHEDULE BEGIN-->
+
+    <section class="main-match-shedule amateurs-match-shedule">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-12 col-sm-12 col-xs-12"><h6>Latest matches</h6></div>
+                <div class="col-md-12 col-sm-12 col-xs-12">
+
+                    <div class="main-lates-matches">
+                            {% for i in e %}
+                            <a href="{{ path('detailG', { 'id': i.id }) }}" class="item">
+                                <span class="championship">{{ i.tournoi }} - {{ i.stade }}</span>
+                                <span class="teams-wrap">
+                    <span class="team">
+                        <span>
+                        <img src="{{ asset('uploads/' ~ i.club1.logo) }}" alt="" style="width: 40px" style="height:40px">
+                        </span>
+                        <span>{{ i.club1 }}</span>
+                    </span>
+                    <span class="score">
+                        <span>{{ i.r1 }}:{{ i.r2 }}</span>
+
+                    </span>
+                    <span class="team1">
+                        <span>{{ i.club2 }}</span>
+                        <span><img src="{{ asset('uploads/' ~ i.club2.logo) }}" alt="" style="width: 40px" style="height:40px"></span>
+                    </span>
+            </span>
+                                <span class="game-result">{{ i.dated |date('F j-Y-g:i a')}} - Arbitre:{{ i.arbitre}}</span>
+                            </a>
+                            {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--MAIN MATCH SHEDULE END-->
+
+
+
+
+    
+{% endblock %}

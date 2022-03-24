@@ -1,0 +1,211 @@
+{% extends "baseFront.html.twig" %}
+{% block match %}
+
+<section class="image-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="info">
+                    <div class="wrap">
+                        <ul class="breadcrumbs">
+                            <li><a href="index-2.html">Main</a>/</li>
+                            <li>Category</li>
+                        </ul>
+                        <h1>Category</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+
+
+{% block body %}
+
+    <div class="store-wrap">
+        <div class="container">
+            <div class="row row-offcanvas row-offcanvas-left">
+                <div class="sidebar col-xs-6 col-sm-6 col-md-3 sidebar-offcanvas" id="sidebar">
+                    <div class="sidebar-menu-wrap">
+                        <h6>Categories</h6>
+                        <ul class="categories-list">
+                            {% set i = 0 %}
+                            {% for c in cat %}
+                                {% set i=i+1 %}
+                            <li>
+                                <a href="{{ path('find',{'id':c.id}) }}"><span class="count">{{ i }}</span>{{c.typeC}}</a>
+                            </li>
+
+                          {% endfor %}
+                                </ul>
+
+                        </ul>
+                    </div>
+
+                    <div class="filter-wrap">
+
+                        <h6>Filters</h6>
+
+                        <script>
+                            var delayInMilliseconds = 1000;
+                            function searchp() {
+                                let searchString = document.getElementById('searchProduits').value; // recuperation de l'input de la recherche
+                                const elements = document.getElementsByName('elements') //recuperation de la reference du dom (liste des tr)
+                                if (searchString.length!==0){
+                                    $.ajax({
+                                        url: '/searchp/'+searchString,
+                                        success: function (data) {
+                                            console.log("data :",data)
+                                            for (let i = 0; i < elements.length; i++){
+                                                elements[i].style.display = "none";
+                                            }
+                                            for (let j = 0; j < data.length; j++) {
+                                                $('#i'+data[j].id).show('slow');
+                                            }
+                                        },
+                                        error: function (xhr, textStatus, errorThrown) {
+                                            alert("erreur lors de la recuperation des données")
+                                        }
+                                    });
+                                }else{
+                                    for (let i = 0; i < elements.length; i++){
+                                        elements[i].style.display = "revert";
+                                    }
+                                }
+
+                            }</script>
+
+                        <div class="sidebar-search-wrap">
+                            <h6>Search</h6>
+                            <form>
+                                <div class="wrap">
+                                    <input onkeyup="searchp()" type="text" id="searchProduits" class="form-control" placeholder="Search">
+                                    <button><i class="fa fa-search" aria-hidden="true"></i></button>
+                                </div>
+                            </form>
+                        </div>
+
+                    <form action="{{ path('find',{'id':verif}) }}" method="get">
+                        <div class="filter-items-wrap">
+                            <div class="filter-title">{%  if verif !=0 %} Prix {% endif %}</div>
+                            <div class="filter-item">
+                                {%  if verif !=0 %}
+                                <ul>
+
+                                    <li>
+                                        <input type="checkbox" name="prix1" value="croi" class="filter-check" id="test1">
+                                        <label for="test1">Croissant</label>
+                                    </li>
+                                    <li>
+                                        <input  type="checkbox" class="filter-check" name="prix2" value="decr"  id="test2">
+                                        <label for="test2">Decroissant</label>
+                                    </li>
+
+
+                                </ul>
+                                {% endif %}
+
+                            </div>
+
+                            <div class="filter-title"> {%  if verif !=0 %}Colors {% endif %}</div>
+                            <div class="color-filter-item">
+                                {%  if verif !=0 %}
+                                <ul>
+
+
+
+                                    <li>
+                                        <label class="color-check gray">
+                                            <input type="checkbox" name="gray" value="gray">
+                                            <span class="check"><i class="fa fa-check" aria-hidden="true"></i></span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="color-check red" name="red" value="red">
+                                            <input type="checkbox">
+                                            <span class="check"><i class="fa fa-check" aria-hidden="true"></i></span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="color-check green">
+                                            <input type="checkbox" name="green" value="green">
+                                            <span class="check"><i class="fa fa-check" aria-hidden="true"></i></span>
+                                        </label>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <label class="color-check black">
+                                            <input type="checkbox" name="black" value="black">
+                                            <span class="check"><i class="fa fa-check" aria-hidden="true"></i></span>
+                                        </label>
+                                    </li>
+
+                                    <li>
+                                        <label class="color-check white">
+                                            <input type="checkbox" name="white" value="white">
+                                            <span class="check"><i class="fa fa-check" aria-hidden="true"></i></span>
+                                        </label>
+                                    </li>
+                                </ul>
+                           {% endif %}
+                            </div>
+
+                        </div>
+                        <br>
+                        {%  if verif !=0 %}<button type="submit">Filter</button> {% endif %}
+                 </form>
+                    </div>
+
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-9">
+                    <p class="hidden-md hidden-lg">
+                        <button type="button" class="btn sidebar-btn" data-toggle="offcanvas" title="Toggle sidebar">sidebar</button>
+                    </p>
+                    <h6>Men's clothing</h6>
+
+                        {% for f in c %}
+
+                        <div class="col-md-4 col-sm-6">
+                            <div class="store-list-item">
+                                <div name="elements" id="{{'i'~ f.id }}">
+
+
+                                    <a href="{{ path('product_page',{'id':f.id}) }}">
+                                        <img src="{{  asset('uploads/img/' ~ f.img) }}" alt="product" width="350px" height="350px">
+                                    </a>
+                                    <div class="info">
+                                        <span class="name">{{ f.nomp}} </span>
+                                        <span class="price">{{ f.prix }} dt</span>
+                                        <div class="btn-wrap">
+
+                                            <a href="{{ path('product_page',{'id':f.id}) }}"> <button class="btn small"> Details</button></a>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+
+
+                        <div class="col-md-12">
+                            <div class="pagination-wrap">
+
+                                    {{ knp_pagination_render(c)}}
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+      
+
+{% endblock %}
+

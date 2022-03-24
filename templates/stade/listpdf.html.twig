@@ -1,0 +1,81 @@
+    <head>
+    <style>
+        /**
+            Set the margins of the page to 0, so the footer and the header
+            can be of the full height and width !
+         **/
+        @page {
+            margin: 0cm 0cm;
+        }
+        /** Define now the real margins of every page in the PDF **/
+        body {
+            margin-top: 3.5cm;
+            margin-left: 1cm;
+            margin-right: 1cm;
+            margin-bottom: 2cm;
+        }
+
+        /** Define the header rules **/
+        header {
+            position: fixed;
+            top: 0cm;
+            left: 0cm;
+            right: 0cm;
+            height: 3cm;
+        }
+
+        /** Define the footer rules **/
+        footer {
+            position: fixed;
+            bottom: 0cm;
+            left: 0cm;
+            right: 0cm;
+            height: 1cm;
+        }
+
+    </style>
+</head>
+<body>
+<!-- Define header and footer blocks before your content -->
+<header>
+    <div class="intro_price" style="color: purple;margin-left: 10px;margin-top: 10px"><b>TurboDevs</b></div>
+    <div style="font-size: 15px;margin-left: 10px">  Adresse : Esprit Technopole Ghazela Ariana</div>
+    <div style="font-size: 15px;margin-left: 10px">  Numéro : +216 24668174</div>
+    <div style="font-size: 15px;margin-left: 10px">  E-mail : TurboDevs@gmail.com</div>
+
+    <div><img src="{{ ('images/soccer/fede.png') }}" style="width: 150px;height: 110px;margin-left: 620px;margin-top: -80px"></div>
+    <hr class="cmDEY eufYP cDHZq" style="color: dimgray;width: 750px;">
+</header>
+
+<footer>
+</footer>
+
+{% block body %}
+    <div class="container" style="background-color:transparent">
+        <h1 align="center" style="color: black">Liste des Stades</h1>
+        <table class="theme_dark" style="background-color: #ffffff" style="table-border: 2px" border="" align="center">
+            <tr style="background-color: rgba(179,139,194,0.56)">
+                <th>Image Stade</th>
+        <th>Name</th>
+        <th>Lieu</th>
+        <th>Etat</th>
+        <th>Nombre</th>
+            </tr>
+            {% for i in e %}
+                <tr>
+        <td valign="top"> <img src="{{'uploads/' ~ i.Photo }}" alt="" width="150"> </td>
+        <td>{{ i.noms }}</td>
+        <td>{{ i.lieu }}</td>
+        <td>{{ i.etat}} </td>
+        <td>{{ i.nbrP}} </td>
+                </tr>
+            {% endfor %}
+        </table>
+<br>
+        <div style="margin-left: 450px;font-size: 15px" align="center"> Avec nos meilleurs voeux de bonheur L'équipe de TurboDevs  </div>
+     <br>
+        <div style="margin-left: 550px;font-size: 15px"> Le : {{ "now"|date("m/d/Y")}}  </div>
+            <div><img src="{{ ('images/soccer/sing.png') }}" style="width: 120px;height: 50px;margin-left: 550px"></div>
+
+    </div>
+{% endblock %}

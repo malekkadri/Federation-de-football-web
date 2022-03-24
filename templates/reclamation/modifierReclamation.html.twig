@@ -1,0 +1,101 @@
+{% extends 'baseFront.html.twig' %}
+{% block match %}
+    <section class="image-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="info">
+                        <div class="wrap">
+                            <ul class="breadcrumbs">
+                                <li>Main</a>/</li>
+                                <li>Reclamation</li>
+                            </ul>
+                            <h1>Reclamation</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+
+{% block body %}
+    <section class="contacts-wrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5">
+                    <h4>Head office</h4>
+                    <p>Selvage mixtape coloring book, street art swag sriracha activated charcoal vegan hammock selfies distillery wayfarers dreamcatcher lyft beard. </p>
+                    <div class="contact-office-img">
+                        <img class="img-responsive" src="images/soccer/contact-office-img.jpg" alt="contact-office-img">
+                    </div>
+                    <ul class="contact-list">
+                        <li><i class="fa fa-flag" aria-hidden="true"></i><span>276 Upper Parliament Street, Liverpool L8, Great Britain</span></li>
+                        <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:team@email.com">team@email.com</a></li>
+                        <li class="phone"><i class="fa fa-phone" aria-hidden="true"></i><span>+61 3 8376 6284</span></li>
+                    </ul>
+                    <ul class="contact-bar">
+                        <li class="facebook"><a href="#"><i class="fa fa-facebook-square" aria-hidden="true"></i></a></li>
+                        <li class="twitter"><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                        <li class="google"><a href="#"><i class="fa fa-google" aria-hidden="true"></i></a></li>
+                        <li class="pinterest"><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+                    </ul>
+                </div>
+                <div class="col-md-7">
+                    <h1 style="color:steelblue" align="center">Ajouter Une Réclamation</h1>
+
+                    <div class="leave-comment-wrap">
+
+
+                        {{ form_start(formareclamation,{'attr':{'class':'form-horizontal'}} ) }}
+                        <div class="row">
+                            <div class="col-md-6">
+
+
+                                <div class="item">
+
+                                    <span>status <i>*</i></span>
+                                    <td>    {{ form_widget(formareclamation.status,{'attr':{'class':'form-control'}}) }}
+                                        {{ form_errors(formareclamation.status) }}</td>
+
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="item">
+
+                                    <span>Objet <i>*</i></span>
+                                    <td>  {{ form_widget(formareclamation.objet,{'attr':{'class':'form-control'}}) }}
+                                        {{ form_errors(formareclamation.objet) }}
+                                    </td>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="item">
+
+                                    <td>   <span>Description</span>
+                                        {{ form_widget(formareclamation.descR,{'attr':{'class':'form-control'}}) }}
+                                        {{ form_errors(formareclamation.descR) }}
+                                    </td>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <button class="comment-submit">Send us message</button>
+                            </div>
+                        </div>
+                        {{ form_end(formareclamation) }}
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+    </section>
+
+
+
+
+{% endblock %}

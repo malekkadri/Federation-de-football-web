@@ -1,0 +1,146 @@
+    {% extends 'baseBack.html.twig' %}
+{% block body %}
+    {# <div class="card">
+        <div class="card-header">
+            <center> <h1>Ajout Match : Match</h1> </center>  #}
+
+
+
+          {#   {{ form(g) }} #}
+         {#    {{ form_start(g) }}
+            <center>
+                <table  >
+                    <tr>
+                        <td>{{ form_label(g.nomA,"Nom d'arbitre'") }}</td>
+                        <td>{{ form_widget(g.nomA) }}</td>
+                        <td> {{ form_errors(g.nomA) }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ form_label(g.nbe,"Nombre d'experience") }}</td>
+                        <td>{{ form_widget(g.nbe)}}</td>
+                        <td>{{ form_errors(g.nbe) }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ form_label(g.descrp,"Description") }}</td>
+                        <td>{{ form_widget(g.descrp)}}</td>
+                        <td>{{ form_errors(g.descrp) }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ form_label(g.image,"photo") }}</td>
+                        <td>{{ form_widget(g.image)}}</td>
+                        <td>{{ form_errors(g.image) }}</td>
+                    </tr>
+
+
+                </table>
+
+                {{ form_end(g) }} #}
+
+
+            <main class="content">
+
+                <div class="container-fluid p-0">
+
+                    <div class="mb-3">
+
+                        <a class="" href="{{ path('afficheG') }}">
+                            Liste Des Matchs :
+                        </a>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12 col-lg-6">
+                            <div class="card">
+                                <div class="card">
+                                    <br>
+                                    <h1 style="color:steelblue" align="center">Formulaire Match</h1>
+                                    {% form_theme (g) 'form_table_layout.html.twig' %}
+
+                                    {{ form_start(g,{'attr': {'novalidate': 'novalidate'}} ) }}
+
+                                    <div class="card ">
+                                        <div class="card-body">
+                                            <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
+                                                <thead>
+                                                <tr>
+                                                    <td><h5 class="card-title ">Tournoi :</h5>{{ form_widget(g.tournoi, {'attr': {'class': 'form-control'}}) }}</td>
+                                                    <td> {{ form_errors(g.tournoi, {'attr': {'class': 'form-control'}}) }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><h5 class="card-title ">Club 1 :</h5>{{ form_widget(g.club1, {'attr': {'class': 'form-control'}}) }}</td>
+                                                    <td> {{ form_errors(g.club1, {'attr': {'class': 'form-control'}}) }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><h5 class="card-title ">Score 1 :</h5>{{ form_widget(g.r1, {'attr': {'class': 'form-control'}}) }}</td>
+                                                     <td> {{ form_errors(g.r1, {'attr': {'class': 'form-control'}}) }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><h5 class="card-title ">Score 2 :</h5>{{ form_widget(g.r2, {'attr': {'class': 'form-control'}}) }}</td>
+                                                <td> {{ form_errors(g.r2, {'attr': {'class': 'form-control'}}) }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><h5 class="card-title ">Club 2 :</h5>{{ form_widget(g.club2, {'attr': {'class': 'form-control'}}) }}</td>
+                                               <td> {{ form_errors(g.club2, {'attr': {'class': 'form-control'}}) }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><h5 class="card-title ">Arbitre :</h5>{{ form_widget(g.arbitre, {'attr': {'class': 'form-control'}}) }}</td>
+                                                    <td> {{ form_errors(g.arbitre, {'attr': {'class': 'form-control'}}) }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><h5 class="card-title ">Stade :</h5>{{ form_widget(g.stade, {'attr': {'class': 'form-control'}}) }}</td>
+                                                 <td> {{ form_errors(g.stade, {'attr': {'class': 'form-control'}}) }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><h5 class="card-title ">Date Debut :</h5>{{ form_widget(g.dated, {'attr': {'class': 'form-control'}}) }}</td>
+                                                   <td> {{ form_errors(g.dated, {'attr': {'class': 'form-control'}}) }}</td>
+                                                </tr>
+                                            
+
+
+                                                </thead>
+                                                <tbody  class="card-header" data-prototype=" ">
+
+                                                </tbody>
+
+                                            </table>
+
+                                        </div>
+
+
+                                        <button class="btn btn-secondary ">save</button>
+
+
+                                    </div>
+
+
+
+
+
+
+
+                                    {{ form_end(g) }}
+
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </main>
+
+
+
+
+
+
+
+
+           {#  </center>
+
+        </div>
+    </div> #}
+
+{% endblock %}

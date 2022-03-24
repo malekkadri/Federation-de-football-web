@@ -1,0 +1,218 @@
+{% extends 'baseFront.html.twig' %}
+{% block match %}
+    <section class="image-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="info">
+                        <div class="wrap">
+                            <ul class="breadcrumbs">
+                                <li><a href="index-2.html">Main</a>/</li>
+                                <li>Category</li>
+                            </ul>
+                            <h1>Category</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+{% block body %}
+
+    <div class="content">
+        <div class="container">
+            <div class="row row-offcanvas row-offcanvas-left">
+
+                <!--SIEDBAR BEGIN-->
+
+                <section class="sidebar col-xs-6 col-sm-6 col-md-3 sidebar-offcanvas" id="sidebar">
+
+
+
+                    {#
+                    <div class="recent-news">
+                        <h6>recent news</h6>
+                        <div class="item">
+                            <div class="date"><a href="news-single.html">{{ i.datea |date('d-m-Y')}}</a> in <a href="news-single.html">highlights</a></div>
+                            <a href="news-single.html" class="name">When somersaulting Sanchez shoulderd Mexico’s </a>
+                        </div>
+                        <div class="item">
+                            <div class="date"><a href="news-single.html">{{ i.datea |date('d-m-Y')}}</a> in <a href="news-single.html">highlights</a></div>
+                            <a href="news-single.html" class="name">When somersaulting Sanchez shoulderd Mexico’s </a>
+                        </div>
+                        <div class="item">
+                            <div class="date"><a href="news-single.html">{{ i.datea |date('d-m-Y')}}</a> in <a href="news-single.html">highlights</a></div>
+                            <a href="news-single.html" class="name">When somersaulting Sanchez shoulderd Mexico’s </a>
+                        </div>
+                    </div>
+                    #}
+
+                </section>
+
+                <!--SIEDBAR END-->
+
+                <!--NEWS SINGLE BEGIN-->
+
+                <section class="news-single col-xs-12 col-sm-12 col-md-9">
+                    <p class="hidden-md hidden-lg">
+                        <button type="button" class="btn sidebar-btn" data-toggle="offcanvas" title="Toggle sidebar">sidebar</button>
+                    </p>
+                    <div class="item">
+                        <div class="top-info">
+                            <div class="date"><a href="#">{{ a.datea |date('d-m-Y')}}</a> by <a href="#">{{ a.getUser().username}}</a></div>
+                            <div class="comment-quantity">3 comments</div>
+                        </div>
+                        <div class="img-wrap">
+                            <div class="bage highlight">highlight</div>
+                            <img src="{{ asset('uploads/img/'~ a.img )}} "alt="news-single">
+                        </div>
+                        <div class="post-text">
+                            <p>{{ a.descr}}.</p>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="tags">
+                                        <a href="#">Football</a>
+                                        <a href="#">Sport</a>
+                                        <a href="#">Soccer</a>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <ul class="share-bar">
+                                        <li class="facebook"><a href="#"><i class="fa fa-facebook-square" aria-hidden="true"></i></a></li>
+                                        <li class="twitter"><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                        <li class="google"><a href="#"><i class="fa fa-google" aria-hidden="true"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="author-box">
+
+                            <div class="top">
+
+
+                                <br>
+                                <div class="avatar">
+
+                                    <img src="{{ asset('uploads/img/' ~ a.getUser().img) }}" alt="author-avatar">
+
+
+                                    {{ render('App\Controller:Badge:statb'~a.getUser().id) }}
+
+                                </div>
+
+
+                                <div class="info">
+
+                                    <div class="name">{{ a.getUser().username}}
+                                        <a href="#" class="quote"><img src="{{ asset('uploads/img/' ~ a.getUser().badge.logoB) }}" style="width:40px" style="height:40px" >
+
+                                        </a>
+                                    </div>
+
+                                    <p>{{ a.titre}}</p>
+                                </div>
+
+
+                            </div>
+                            <div class="share-box">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="item">
+                                            <div class="row">
+                                                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                                    <div class="title">25 posts</div>
+                                                </div>
+                                                <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12 text-right">
+                                                    <ul class="share-socials">
+                                                        <li><a href="#"><i class="fa fa-facebook-square" aria-hidden="true"></i></a></li>
+                                                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                                        <li><a href="#"><i class="fa fa-google" aria-hidden="true"></i></a></li>
+                                                        <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                                                        <li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% block interact %}
+
+                        {% endblock %}
+                    </div>
+                </section>
+
+                <!--NEWS SINGLE END-->
+
+            </div>
+        </div>
+    </div>
+
+    <!--CONTENT END-->
+
+
+{% endblock %}
+{% block breakingnews %}
+{% endblock %}
+{% block css %}
+    <style>
+
+        .wrapper{
+            width:70%;
+        }
+        @media(max-width:992px){
+            .wrapper{
+                width:100%;
+            }
+        }
+        .panel-heading {
+            padding: 0;
+            border:0;
+        }
+        .panel-title>a, .panel-title>a:active{
+            display:block;
+            padding:10px;
+            color:#555;
+            font-size:10px;
+            text-transform:uppercase;
+            letter-spacing:1px;
+            word-spacing:3px;
+            text-decoration:none;
+        }
+        .panel-heading  a:before {
+            font-family: 'Glyphicons Halflings';
+            content: "\e114";
+            float: right;
+            transition: all 0.5s;
+        }
+        .panel-heading.active a:before {
+            -webkit-transform: rotate(180deg);
+            -moz-transform: rotate(180deg);
+            transform: rotate(180deg);
+        }
+
+         .labels {
+             display: flex;
+             justify-content: space-between;
+             margin-bottom: 5px;
+
+        .span {
+            color: #666;
+            text-align: center;
+        }
+
+        }
+
+        .progress {
+            height: 5px;
+        }
+        .progress-bar {
+            background: -webkit-linear-gradient(left, #33156d 0%,#f282bc 100%); /* Chrome10-25,Safari5.1-6 */
+        }
+
+
+
+    </style>
+{% endblock %}
